@@ -1,0 +1,2287 @@
+﻿function Ttt() {
+  let [e, t] = (0, v.useState)([]),
+    [n, r] = (0, v.useState)([]),
+    [i, a] = (0, v.useState)(null),
+    [o, s] = (0, v.useState)(null),
+    [c, l] = (0, v.useState)(``),
+    [u, d] = (0, v.useState)(``),
+    [f, p] = (0, v.useState)(null),
+    [m, h] = (0, v.useState)(``),
+    [g, _] = (0, v.useState)(``),
+    [y, b] = (0, v.useState)(`64`),
+    [x, S] = (0, v.useState)(`Miscel├íneo`),
+    [C, w] = (0, v.useState)(!1),
+    [T, E] = (0, v.useState)(!1),
+    [D, O] = (0, v.useState)(``),
+    [k, ee] = (0, v.useState)(``),
+    [P, L] = (0, v.useState)(null),
+    [se, ue] = (0, v.useState)(``),
+    [me, he] = (0, v.useState)(``),
+    [ge, _e] = (0, v.useState)(!1),
+    [ve, ye] = (0, v.useState)(!1),
+    [be, xe] = (0, v.useState)(`0`),
+    [Se, Ce] = (0, v.useState)(`self`),
+    [we, Te] = (0, v.useState)(``),
+    [Ee, De] = (0, v.useState)(`none`),
+    [Oe, ke] = (0, v.useState)(`2.0`),
+    [Ae, je] = (0, v.useState)(!1),
+    [Me, Ne] = (0, v.useState)(`STONE`),
+    [Pe, Fe] = (0, v.useState)(!1),
+    [Ie, Le] = (0, v.useState)(`20`),
+    [Re, ze] = (0, v.useState)(`5`),
+    [Be, Ve] = (0, v.useState)(`none`),
+    [He, Ue] = (0, v.useState)(!1),
+    [We, Ge] = (0, v.useState)(`block`),
+    [Ke, qe] = (0, v.useState)(`uniform`),
+    [Je, Ye] = (0, v.useState)(null),
+    [Xe, Ze] = (0, v.useState)(``),
+    [Qe, $e] = (0, v.useState)(``),
+    [et, tt] = (0, v.useState)(null),
+    [nt, rt] = (0, v.useState)(``),
+    [it, st] = (0, v.useState)(``),
+    [lt, mt] = (0, v.useState)(``),
+    [ht, H] = (0, v.useState)(``),
+    Tt = (0, v.useRef)(null),
+    Et = (0, v.useRef)(null),
+    Dt = (0, v.useRef)(null),
+    [Ot, kt] = (0, v.useState)(xt()),
+    [At, jt] = (0, v.useState)(St()),
+    [Mt, Nt] = (0, v.useState)(Ct()),
+    [U, Pt] = (0, v.useState)(!1),
+    [Ft, It] = (0, v.useState)(wt()),
+    [Lt, Rt] = (0, v.useState)(1),
+    [zt, Bt] = (0, v.useState)(!1),
+    [Vt, Ht] = (0, v.useState)(``),
+    [Ut, Wt] = (0, v.useState)(``),
+    [Gt, Kt] = (0, v.useState)(``),
+    [qt, Jt] = (0, v.useState)(``),
+    [Yt, Xt] = (0, v.useState)(null),
+    [Zt, Qt] = (0, v.useState)(``),
+    [$t, en] = (0, v.useState)(``),
+    [tn, nn] = (0, v.useState)(``),
+    rn = (0, v.useRef)(null),
+    [an, on] = (0, v.useState)(``),
+    [sn, cn] = (0, v.useState)(``),
+    ln = (0, v.useRef)(null),
+    un = (e) => {
+      let t = e.target.value,
+        n = t.toLowerCase().replace(/[^a-z_]/g, ``);
+      l(n),
+        cn(
+          t === n
+            ? ``
+            : `Solo se permiten letras min├â┬║sculas y guiones bajos (_).`,
+        );
+    },
+    dn = (e) => {
+      let t = e.target.value,
+        n = t.toLowerCase().replace(/[^a-z_]/g, ``);
+      Kt(n),
+        Jt(
+          t === n
+            ? ``
+            : `Solo se permiten letras min├â┬║sculas y guiones bajos (_).`,
+        );
+    },
+    fn = (e) => {
+      let t = e.target.value,
+        n = t.toLowerCase().replace(/[^a-z_]/g, ``);
+      O(n),
+        mt(
+          t === n
+            ? ``
+            : `Solo se permiten letras min├â┬║sculas y guiones bajos (_).`,
+        );
+    },
+    pn = (e) => {
+      S(e.target.value), kt(xt()), jt(St()), Nt(Ct());
+    },
+    mn = async (e) => {
+      let t = e.target.files[0];
+      if ((on(``), !t)) {
+        p(null), h(``), _(``);
+        return;
+      }
+      if (!t.name.toLowerCase().endsWith(`.png`))
+        return (
+          on(`Error: Solo se permiten archivos con extensi├â┬│n .png.`), _n()
+        );
+      if (t.size > 50 * 1024)
+        return (
+          on(`Error: El archivo supera el peso m├â┬íximo permitido de 50KB.`),
+          _n()
+        );
+      try {
+        await gn(t), p(t), h(URL.createObjectURL(t));
+        let e = await hn(t);
+        _(e);
+      } catch (e) {
+        on(e), _n();
+      }
+    },
+    hn = (e) =>
+      new Promise((t, n) => {
+        let r = new FileReader();
+        (r.onload = () => {
+          let e = r.result;
+          t(e.substring(e.indexOf(`,`) + 1));
+        }),
+          (r.onerror = () => n(`Error al leer el archivo con FileReader.`)),
+          r.readAsDataURL(e);
+      }),
+    gn = (e, t = !1) =>
+      new Promise((n, r) => {
+        let i = new Image();
+        (i.src = URL.createObjectURL(e)),
+          (i.onload = () => {
+            URL.revokeObjectURL(i.src),
+              t
+                ? (i.width === 16 && i.height === 16) ||
+                  (i.width === 32 && i.height === 32)
+                  ? n(!0)
+                  : r(
+                      `Error: Dimensiones incorrectas para lateral. (Actual: ${i.width}├âÔÇö${i.height}px ├óÔé¼ÔÇØ Se requiere 16├âÔÇö16 o 32├âÔÇö32)`,
+                    )
+                : (i.width === 16 && i.height === 16) ||
+                    (i.width === 32 && i.height === 32)
+                  ? n(!0)
+                  : r(
+                      `Error: Dimensiones incorrectas. (Actual: ${i.width}├âÔÇö${i.height}px ├óÔé¼ÔÇØ Se requiere 16├âÔÇö16 o 32├âÔÇö32)`,
+                    );
+          }),
+          (i.onerror = () => r(`Error al procesar la imagen.`));
+      }),
+    _n = () => {
+      p(null), h(``), _(``), ln.current && (ln.current.value = ``);
+    },
+    vn = () => {
+      L(null),
+        ue(``),
+        he(``),
+        Ye(null),
+        Ze(``),
+        $e(``),
+        tt(null),
+        rt(``),
+        st(``),
+        Tt.current && (Tt.current.value = ``),
+        Et.current && (Et.current.value = ``),
+        Dt.current && (Dt.current.value = ``);
+    },
+    yn = () => {
+      O(``),
+        ee(``),
+        vn(),
+        _e(!1),
+        ye(!1),
+        xe(`0`),
+        Ce(`self`),
+        Te(``),
+        De(`none`),
+        ke(`2.0`),
+        je(!1),
+        Ne(`STONE`),
+        Fe(!1),
+        Le(`20`),
+        ze(`5`),
+        Ve(`none`),
+        Ue(!1),
+        Ge(`block`),
+        qe(`uniform`),
+        mt(``),
+        H(``),
+        Pt(!1),
+        It(wt()),
+        Rt(1),
+        Bt(!1),
+        s(null);
+    },
+    bn = async (e) => {
+      let t = e.target.files[0];
+      if ((H(``), !t)) {
+        vn();
+        return;
+      }
+      if (!t.name.toLowerCase().endsWith(`.png`))
+        return H(`Error: Solo se permiten archivos con extensi├â┬│n .png.`), vn();
+      if (t.size > 50 * 1024)
+        return (
+          H(`Error: El archivo supera el peso m├â┬íximo permitido de 50KB.`), vn()
+        );
+      try {
+        await gn(t), L(t), ue(URL.createObjectURL(t));
+        let e = await hn(t);
+        he(e);
+      } catch (e) {
+        H(e), vn();
+      }
+    },
+    xn = async (e, t) => {
+      let n = e.target.files[0];
+      if ((H(``), !n)) {
+        t === `top` && (Ye(null), Ze(``), $e(``)),
+          t === `side` && (tt(null), rt(``), st(``));
+        return;
+      }
+      if (!n.name.toLowerCase().endsWith(`.png`)) {
+        H(`Error: Solo se permiten archivos con extensi├â┬│n .png.`);
+        return;
+      }
+      if (n.size > 50 * 1024) {
+        H(`Error: El archivo supera el peso m├â┬íximo permitido de 50KB.`);
+        return;
+      }
+      try {
+        await gn(n, t === `side`);
+        let e = URL.createObjectURL(n),
+          r = await hn(n);
+        t === `top` ? (Ye(n), Ze(e), $e(r)) : (tt(n), rt(e), st(r));
+      } catch (e) {
+        H(e);
+      }
+    },
+    Sn = async (e) => {
+      let t = e.target.files[0];
+      if ((nn(``), !t)) {
+        Xt(null), Qt(``), en(``);
+        return;
+      }
+      if (!t.name.toLowerCase().endsWith(`.png`)) {
+        nn(`Solo archivos PNG.`);
+        return;
+      }
+      if (t.size > 50 * 1024) {
+        nn(`M├â┬íx 50KB.`);
+        return;
+      }
+      try {
+        await gn(t), Xt(t), Qt(URL.createObjectURL(t));
+        let e = await hn(t);
+        en(e);
+      } catch (e) {
+        nn(e);
+      }
+    },
+    Cn = () => {
+      l(``),
+        d(``),
+        _n(),
+        b(`64`),
+        S(`Miscel├íneo`),
+        w(!1),
+        E(!1),
+        kt(xt()),
+        jt(St()),
+        Nt(Ct()),
+        Pt(!1),
+        It(wt()),
+        Rt(1),
+        Bt(!1),
+        Ht(``),
+        on(``),
+        cn(``),
+        s(null);
+    },
+    wn = (r) => {
+      if ((r.preventDefault(), !c)) {
+        cn(`El ID del ├â┬¡tem es requerido.`);
+        return;
+      }
+      if (!u.trim()) {
+        alert(`El Nombre In-Game es requerido.`);
+        return;
+      }
+      if (!f && !g) {
+        on(`Debe subir una textura v├â┬ílida.`);
+        return;
+      }
+      if (n.some((e) => e.id === c)) {
+        cn(`Este ID ya est├â┬í en uso por un bloque.`);
+        return;
+      }
+      if (e.some((e) => e.id === c && e.id !== o)) {
+        cn(`Este ID ya est├â┬í en uso por otro ├â┬¡tem.`);
+        return;
+      }
+      let i = U
+          ? {
+              slots: Ft.map((e) => e || null),
+              resultCount: Lt,
+              shapeless: zt,
+              type: zt ? `shapeless` : `shaped`,
+            }
+          : null,
+        s = {
+          id: c,
+          name: u,
+          textureUrl: m,
+          textureBase64: g,
+          stackSize: parseInt(y),
+          category: x,
+          immuneToLava: C,
+          enchantedGlow: T,
+          sound: Vt || null,
+          ...(x === `Herramienta/Arma` && {
+            toolType: Ot.toolType,
+            material: Ot.material,
+            attackDamage:
+              Ot.attackDamage === `` ? null : parseFloat(Ot.attackDamage),
+            attackSpeed:
+              Ot.attackSpeed === `` ? null : parseFloat(Ot.attackSpeed),
+            durability: Ot.durability === `` ? null : parseInt(Ot.durability),
+            effects: Ot.effects,
+            holderEffects: Ot.holderEffects,
+          }),
+          ...(x === `Comida` && {
+            nutrition: parseInt(At.nutrition) || 0,
+            saturation: parseFloat(At.saturation) || 0,
+            alwaysEdible: At.alwaysEdible,
+            wolfFood: At.wolfFood,
+            effects: At.effects,
+          }),
+          ...(x === `Arrojadizo` && {
+            cooldownTicks: parseInt(Mt.cooldownTicks) || 20,
+            throwForce: parseFloat(Mt.throwForce) || 1.5,
+            throwSound: Mt.throwSound || null,
+            impactSound: Mt.impactSound || null,
+            effects: Mt.effects,
+          }),
+          recipe: i,
+        };
+      t(o ? e.map((e) => (e.id === o ? s : e)) : [...e, s]), Cn(), a(null);
+    },
+    Tn = (t) => {
+      if ((t.preventDefault(), !D)) {
+        mt(`El ID del bloque es requerido.`);
+        return;
+      }
+      if (!k.trim()) {
+        alert(`El Nombre In-Game es requerido.`);
+        return;
+      }
+      if (We === `block`) {
+        if (!P && !me) {
+          H(`Debe subir una textura v├â┬ílida.`);
+          return;
+        }
+      } else if ((!Je && !Qe) || (!et && !it)) {
+        H(
+          `Debe subir texturas superiores (16├âÔÇö16 o 32├âÔÇö32) y laterales (16├âÔÇö16 o 32├âÔÇö32) v├â┬ílidas para la losa.`,
+        );
+        return;
+      }
+      if (e.some((e) => e.id === D)) {
+        mt(`Este ID ya est├â┬í en uso por un ├â┬¡tem.`);
+        return;
+      }
+      if (n.some((e) => e.id === D && e.id !== o)) {
+        mt(`Este ID ya est├â┬í en uso por otro bloque.`);
+        return;
+      }
+      let i = U
+          ? {
+              slots: Ft.map((e) => e || null),
+              resultCount: Lt,
+              shapeless: zt,
+              type: zt ? `shapeless` : `shaped`,
+            }
+          : null,
+        s = {
+          id: D,
+          name: k,
+          textureUrl: se,
+          textureBase64: me,
+          hasGravity: ge,
+          explosionResistant: ve,
+          luminance: Math.min(15, Math.max(0, parseInt(be) || 0)),
+          dropType: Se,
+          customDrop: we,
+          requiredTool: Ee,
+          hardness: parseFloat(Oe) || 2,
+          isTransparent: Ae,
+          soundGroup: Me,
+          isFlammable: Pe,
+          burnChance: parseInt(Ie) || 20,
+          spreadChance: parseInt(Re) || 5,
+          miningTier: Be,
+          silkTouch: He,
+          blockShape: We,
+          slabTextureMode: Ke,
+          slabTopTextureUrl: Xe,
+          slabTopTextureBase64: Qe,
+          slabSideTextureUrl: nt,
+          slabSideTextureBase64: it,
+          recipe: i,
+        };
+      r(o ? n.map((e) => (e.id === o ? s : e)) : [...n, s]), yn(), a(null);
+    },
+    En = (n) => t(e.filter((e) => e.id !== n)),
+    Dn = (e) => r(n.filter((t) => t.id !== e)),
+    On = (e) => {
+      a(`item`),
+        s(e.id),
+        l(e.id),
+        d(e.name),
+        p(null),
+        h(e.textureUrl),
+        _(e.textureBase64),
+        b(String(e.stackSize)),
+        S(e.category),
+        w(e.immuneToLava || !1),
+        E(e.enchantedGlow || !1),
+        Ht(e.sound || ``),
+        e.category === `Herramienta/Arma`
+          ? kt({
+              toolType: e.toolType || `Espada`,
+              material: e.material || `Hierro`,
+              attackDamage:
+                e.attackDamage !== null && e.attackDamage !== void 0
+                  ? String(e.attackDamage)
+                  : ``,
+              attackSpeed:
+                e.attackSpeed !== null && e.attackSpeed !== void 0
+                  ? String(e.attackSpeed)
+                  : ``,
+              durability:
+                e.durability !== null && e.durability !== void 0
+                  ? String(e.durability)
+                  : ``,
+              effects: e.effects || [],
+              holderEffects: e.holderEffects || [],
+            })
+          : e.category === `Comida`
+            ? jt({
+                nutrition:
+                  e.nutrition !== null && e.nutrition !== void 0
+                    ? String(e.nutrition)
+                    : ``,
+                saturation:
+                  e.saturation !== null && e.saturation !== void 0
+                    ? String(e.saturation)
+                    : ``,
+                alwaysEdible: e.alwaysEdible || !1,
+                wolfFood: e.wolfFood || !1,
+                effects: e.effects || [],
+              })
+            : e.category === `Arrojadizo` &&
+              Nt({
+                cooldownTicks:
+                  e.cooldownTicks !== null && e.cooldownTicks !== void 0
+                    ? String(e.cooldownTicks)
+                    : `20`,
+                throwForce:
+                  e.throwForce !== null && e.throwForce !== void 0
+                    ? String(e.throwForce)
+                    : `1.5`,
+                throwSound: e.throwSound || `entity.snowball.throw`,
+                impactSound: e.impactSound || `block.glass.break`,
+                effects: e.effects || [],
+              }),
+        e.recipe
+          ? (Pt(!0),
+            It(e.recipe.slots || wt()),
+            Rt(e.recipe.resultCount || 1),
+            Bt(e.recipe.shapeless || !1))
+          : (Pt(!1), It(wt()), Rt(1), Bt(!1));
+    },
+    kn = (e) => {
+      a(`block`),
+        s(e.id),
+        O(e.id),
+        ee(e.name),
+        L(null),
+        ue(e.textureUrl || ``),
+        he(e.textureBase64 || ``),
+        _e(e.hasGravity || !1),
+        ye(e.explosionResistant || !1),
+        xe(String(e.luminance || `0`)),
+        Ce(e.dropType || `self`),
+        Te(e.customDrop || ``),
+        De(e.requiredTool || `none`),
+        ke(String(e.hardness || `2.0`)),
+        je(e.isTransparent || !1),
+        Ne(e.soundGroup || `STONE`),
+        Fe(e.isFlammable || !1),
+        Le(String(e.burnChance || `20`)),
+        ze(String(e.spreadChance || `5`)),
+        Ve(e.miningTier || `none`),
+        Ue(e.silkTouch || !1),
+        Ge(e.blockShape || `block`),
+        qe(e.slabTextureMode || `uniform`),
+        Ze(e.slabTopTextureUrl || ``),
+        $e(e.slabTopTextureBase64 || ``),
+        rt(e.slabSideTextureUrl || ``),
+        st(e.slabSideTextureBase64 || ``),
+        e.recipe
+          ? (Pt(!0),
+            It(e.recipe.slots || wt()),
+            Rt(e.recipe.resultCount || 1),
+            Bt(e.recipe.shapeless || !1))
+          : (Pt(!1), It(wt()), Rt(1), Bt(!1));
+    },
+    An = () => {
+      (!e.length && !n.length) ||
+        !Ut.trim() ||
+        !Gt.trim() ||
+        qt ||
+        at(e, { name: Ut, id: Gt, tabIconBase64: $t }, n);
+    },
+    jn = () => {
+      a(null), Cn(), yn();
+    },
+    Mn = e.length + n.length,
+    Nn = (e) =>
+      e === `Herramienta/Arma`
+        ? `text-sky-400 bg-sky-950/60`
+        : e === `Comida`
+          ? `text-amber-400 bg-amber-950/60`
+          : e === `Arrojadizo`
+            ? `text-rose-400 bg-rose-950/60`
+            : `text-mc-gold bg-mc-slot`;
+  return (0, B.jsxs)(`div`, {
+    className: `min-h-screen bg-mc-dark text-slate-100 flex flex-col font-sans`,
+    children: [
+      (0, B.jsxs)(`header`, {
+        className: `bg-mc-panel border-b-4 border-mc-border p-4 shadow-lg flex items-center justify-between`,
+        children: [
+          (0, B.jsxs)(`div`, {
+            className: `flex items-center gap-3`,
+            children: [
+              (0, B.jsx)(I, {
+                className: `w-8 h-8 text-mc-green animate-pulse`,
+              }),
+              (0, B.jsxs)(`div`, {
+                children: [
+                  (0, B.jsx)(`h1`, {
+                    className: `font-pixel text-3xl tracking-wide text-mc-gold select-none`,
+                    children: `Lazy Forge`,
+                  }),
+                  (0, B.jsx)(`p`, {
+                    className: `text-xs text-slate-400`,
+                    children: `Forja de Mods Automatizada`,
+                  }),
+                ],
+              }),
+            ],
+          }),
+          (0, B.jsxs)(`div`, {
+            className: `flex items-center gap-2 bg-mc-dark px-3 py-1.5 rounded border border-mc-border text-xs text-slate-400`,
+            children: [
+              (0, B.jsx)(`span`, {
+                className: `w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse`,
+              }),
+              `Workspace activo`,
+            ],
+          }),
+        ],
+      }),
+      (0, B.jsxs)(`main`, {
+        className: `flex-1 flex flex-col md:flex-row`,
+        children: [
+          (0, B.jsx)(`section`, {
+            className: `w-full md:w-[70%] p-6 flex flex-col gap-6 border-r-0 md:border-r-4 border-mc-border min-h-0`,
+            children: i
+              ? i === `item`
+                ? (0, B.jsxs)(`div`, {
+                    className: `flex-1 bg-mc-panel rounded-lg border-2 border-mc-border p-6 flex flex-col shadow-2xl overflow-hidden`,
+                    children: [
+                      (0, B.jsxs)(`div`, {
+                        className: `flex justify-between items-center border-b-2 border-mc-border pb-4 mb-6 shrink-0`,
+                        children: [
+                          (0, B.jsxs)(`div`, {
+                            className: `flex items-center gap-2`,
+                            children: [
+                              (0, B.jsx)(ce, {
+                                className: `w-6 h-6 text-mc-gold`,
+                              }),
+                              (0, B.jsxs)(`div`, {
+                                children: [
+                                  (0, B.jsx)(`h2`, {
+                                    className: `font-pixel text-3xl text-mc-gold`,
+                                    children: o
+                                      ? `Editar Elemento`
+                                      : `Crear Nuevo Elemento`,
+                                  }),
+                                  (0, B.jsx)(`p`, {
+                                    className: `text-xs text-slate-400`,
+                                    children: o
+                                      ? `Modifica las propiedades del ├â┬¡tem`
+                                      : `Rellena las propiedades del ├â┬¡tem`,
+                                  }),
+                                ],
+                              }),
+                            ],
+                          }),
+                          (0, B.jsxs)(`button`, {
+                            type: `button`,
+                            onClick: jn,
+                            className: `px-3 py-1.5 bg-mc-slot hover:bg-slate-700 rounded text-xs transition-colors cursor-pointer border border-mc-border flex items-center gap-1.5`,
+                            children: [
+                              (0, B.jsx)(j, { className: `w-3.5 h-3.5` }),
+                              ` Volver al inicio`,
+                            ],
+                          }),
+                        ],
+                      }),
+                      (0, B.jsx)(`form`, {
+                        onSubmit: wn,
+                        className: `flex-1 overflow-y-auto pr-2`,
+                        children: (0, B.jsxs)(`div`, {
+                          className: `grid grid-cols-1 md:grid-cols-2 gap-6`,
+                          children: [
+                            (0, B.jsxs)(`div`, {
+                              className: `space-y-4`,
+                              children: [
+                                (0, B.jsxs)(`div`, {
+                                  children: [
+                                    (0, B.jsx)(V, {
+                                      required: !0,
+                                      children: `ID del ├â┬ìtem`,
+                                    }),
+                                    (0, B.jsx)(ut, {
+                                      value: c,
+                                      onChange: un,
+                                      placeholder: `ej. espada_flamigera`,
+                                      className: `font-mono text-sm`,
+                                      required: !0,
+                                    }),
+                                    sn
+                                      ? (0, B.jsxs)(`span`, {
+                                          className: `text-xs text-rose-400 flex items-center gap-1 mt-1`,
+                                          children: [
+                                            (0, B.jsx)(fe, {
+                                              className: `w-3.5 h-3.5`,
+                                            }),
+                                            sn,
+                                          ],
+                                        })
+                                      : (0, B.jsx)(`span`, {
+                                          className: `text-[10px] text-slate-500 block mt-1`,
+                                          children: `Solo min├â┬║sculas y guiones bajos`,
+                                        }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  children: [
+                                    (0, B.jsx)(V, {
+                                      required: !0,
+                                      children: `Nombre In-Game`,
+                                    }),
+                                    (0, B.jsx)(ut, {
+                                      value: u,
+                                      onChange: (e) => d(e.target.value),
+                                      placeholder: `ej. Espada Flam├â┬¡gera`,
+                                      required: !0,
+                                    }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  className: `grid grid-cols-2 gap-4`,
+                                  children: [
+                                    (0, B.jsxs)(`div`, {
+                                      children: [
+                                        (0, B.jsx)(V, {
+                                          children: `Tama├â┬▒o de Stack`,
+                                        }),
+                                        (0, B.jsxs)(ft, {
+                                          value: y,
+                                          onChange: (e) => b(e.target.value),
+                                          children: [
+                                            (0, B.jsx)(`option`, {
+                                              value: `1`,
+                                              children: `1 (No apilable)`,
+                                            }),
+                                            (0, B.jsx)(`option`, {
+                                              value: `16`,
+                                              children: `16 (Poco apilable)`,
+                                            }),
+                                            (0, B.jsx)(`option`, {
+                                              value: `64`,
+                                              children: `64 (Por defecto)`,
+                                            }),
+                                          ],
+                                        }),
+                                      ],
+                                    }),
+                                    (0, B.jsxs)(`div`, {
+                                      children: [
+                                        (0, B.jsx)(V, {
+                                          children: `Categor├â┬¡a`,
+                                        }),
+                                        (0, B.jsxs)(ft, {
+                                          value: x,
+                                          onChange: pn,
+                                          children: [
+                                            (0, B.jsx)(`option`, {
+                                              value: `Miscel├íneo`,
+                                              children: `Miscel├íneo`,
+                                            }),
+                                            (0, B.jsx)(`option`, {
+                                              value: `Herramienta/Arma`,
+                                              children: `Herramienta / Arma`,
+                                            }),
+                                            (0, B.jsx)(`option`, {
+                                              value: `Comida`,
+                                              children: `Comida`,
+                                            }),
+                                            (0, B.jsx)(`option`, {
+                                              value: `Arrojadizo`,
+                                              children: `├░┼©┼¢┬» Arrojadizo (Proyectil)`,
+                                            }),
+                                          ],
+                                        }),
+                                      ],
+                                    }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  children: [
+                                    (0, B.jsx)(V, {
+                                      children: (0, B.jsxs)(`span`, {
+                                        className: `flex items-center gap-1.5`,
+                                        children: [
+                                          (0, B.jsx)(re, {
+                                            className: `w-3.5 h-3.5 text-slate-400`,
+                                          }),
+                                          `Sonido al usar / consumir`,
+                                        ],
+                                      }),
+                                    }),
+                                    (0, B.jsx)(ft, {
+                                      value: Vt,
+                                      onChange: (e) => Ht(e.target.value),
+                                      children: ot.map((e) =>
+                                        (0, B.jsxs)(
+                                          `option`,
+                                          {
+                                            value: e.value,
+                                            children: [
+                                              e.label,
+                                              e.value ? ` ├óÔé¼ÔÇØ ${e.value}` : ``,
+                                            ],
+                                          },
+                                          e.value,
+                                        ),
+                                      ),
+                                    }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  className: `bg-mc-dark p-4 rounded border-2 border-mc-border space-y-3`,
+                                  children: [
+                                    (0, B.jsx)(`span`, {
+                                      className: `text-xs font-semibold text-mc-gold uppercase tracking-wider block`,
+                                      children: `Propiedades Extra`,
+                                    }),
+                                    (0, B.jsx)(pt, {
+                                      checked: C,
+                                      onChange: w,
+                                      icon: (0, B.jsx)(I, {
+                                        className: `w-4 h-4 text-orange-500`,
+                                      }),
+                                      label: `Inmune a la lava`,
+                                    }),
+                                    (0, B.jsx)(pt, {
+                                      checked: T,
+                                      onChange: E,
+                                      icon: (0, B.jsx)(ce, {
+                                        className: `w-4 h-4 text-purple-400`,
+                                      }),
+                                      label: `Brillo Encantado`,
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            }),
+                            (0, B.jsxs)(`div`, {
+                              className: `flex flex-col gap-4`,
+                              children: [
+                                (0, B.jsxs)(`label`, {
+                                  className: `block text-sm font-semibold text-slate-300`,
+                                  children: [
+                                    `Textura (.png, 16├âÔÇö16 o 32├âÔÇö32, <50KB) `,
+                                    (0, B.jsx)(`span`, {
+                                      className: `text-rose-500`,
+                                      children: `*`,
+                                    }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  className: `flex-1 flex flex-col items-center justify-center border-2 border-dashed border-mc-border bg-mc-dark rounded-lg p-6 text-center relative hover:border-mc-gold transition-colors group min-h-[180px]`,
+                                  children: [
+                                    (0, B.jsx)(`input`, {
+                                      type: `file`,
+                                      ref: ln,
+                                      onChange: mn,
+                                      accept: `.png`,
+                                      className: `absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10`,
+                                      required: !f && !g,
+                                    }),
+                                    m
+                                      ? (0, B.jsxs)(`div`, {
+                                          className: `flex flex-col items-center gap-3`,
+                                          children: [
+                                            (0, B.jsx)(`div`, {
+                                              className: `w-24 h-24 bg-mc-slot border-4 border-mc-border rounded flex items-center justify-center shadow-inner overflow-hidden`,
+                                              children: (0, B.jsx)(`img`, {
+                                                src: m,
+                                                alt: `Preview`,
+                                                className: `w-16 h-16 object-contain`,
+                                                style: {
+                                                  imageRendering: `pixelated`,
+                                                },
+                                              }),
+                                            }),
+                                            (0, B.jsxs)(`span`, {
+                                              className: `text-xs text-emerald-400 font-semibold flex items-center gap-1`,
+                                              children: [
+                                                (0, B.jsx)(N, {
+                                                  className: `w-3.5 h-3.5`,
+                                                }),
+                                                ` Textura v├â┬ílida cargada`,
+                                              ],
+                                            }),
+                                            (0, B.jsx)(`span`, {
+                                              className: `text-[10px] text-slate-500 truncate max-w-[200px]`,
+                                              children: f
+                                                ? `${f.name} (${(f.size / 1024).toFixed(1)} KB)`
+                                                : `Textura existente (haz clic para reemplazar)`,
+                                            }),
+                                          ],
+                                        })
+                                      : (0, B.jsxs)(`div`, {
+                                          className: `flex flex-col items-center gap-2`,
+                                          children: [
+                                            (0, B.jsx)(`div`, {
+                                              className: `p-3 bg-mc-slot rounded-full border border-mc-border group-hover:scale-110 transition-transform duration-300`,
+                                              children: (0, B.jsx)(pe, {
+                                                className: `w-6 h-6 text-slate-400`,
+                                              }),
+                                            }),
+                                            (0, B.jsx)(`span`, {
+                                              className: `text-xs font-semibold text-slate-300`,
+                                              children: `Haz clic o arrastra un archivo PNG`,
+                                            }),
+                                            (0, B.jsx)(`span`, {
+                                              className: `text-[10px] text-slate-500`,
+                                              children: `Solo 16├âÔÇö16 o 32├âÔÇö32 ├é┬À M├â┬íx. 50 KB`,
+                                            }),
+                                          ],
+                                        }),
+                                  ],
+                                }),
+                                an &&
+                                  (0, B.jsxs)(`div`, {
+                                    className: `p-3 bg-rose-950/40 border border-rose-900 rounded flex gap-2 items-start text-xs text-rose-300`,
+                                    children: [
+                                      (0, B.jsx)(oe, {
+                                        className: `w-4 h-4 shrink-0 text-rose-400 mt-0.5`,
+                                      }),
+                                      (0, B.jsx)(`span`, { children: an }),
+                                    ],
+                                  }),
+                              ],
+                            }),
+                            x === `Herramienta/Arma` &&
+                              (0, B.jsx)(vt, { data: Ot, onChange: kt }),
+                            x === `Comida` &&
+                              (0, B.jsx)(yt, { data: At, onChange: jt }),
+                            x === `Arrojadizo` &&
+                              (0, B.jsx)(bt, { data: Mt, onChange: Nt }),
+                            (0, B.jsx)(`div`, {
+                              className: `md:col-span-2`,
+                              children: (0, B.jsxs)(`div`, {
+                                onClick: () => Pt((e) => !e),
+                                className: `flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all ${U ? `bg-mc-slot border-mc-gold/60` : `bg-mc-dark border-mc-border hover:border-slate-500`}`,
+                                children: [
+                                  (0, B.jsx)(`div`, {
+                                    className: `w-11 h-6 rounded-full relative transition-colors shrink-0 ${U ? `bg-mc-green` : `bg-slate-600`}`,
+                                    children: (0, B.jsx)(`div`, {
+                                      className: `absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all ${U ? `left-6` : `left-1`}`,
+                                    }),
+                                  }),
+                                  (0, B.jsxs)(`div`, {
+                                    children: [
+                                      (0, B.jsxs)(`div`, {
+                                        className: `flex items-center gap-2`,
+                                        children: [
+                                          (0, B.jsx)(R, {
+                                            className: `w-4 h-4 ${U ? `text-mc-gold` : `text-slate-400`}`,
+                                          }),
+                                          (0, B.jsx)(`span`, {
+                                            className: `text-sm font-semibold ${U ? `text-slate-100` : `text-slate-400`}`,
+                                            children: `├é┬┐Este ├â┬¡tem se puede craftear?`,
+                                          }),
+                                        ],
+                                      }),
+                                      (0, B.jsx)(`p`, {
+                                        className: `text-[10px] text-slate-500 mt-0.5`,
+                                        children: U
+                                          ? `Configura la receta en la mesa de crafteo a continuaci├â┬│n.`
+                                          : `Activa para definir la receta de crafteo.`,
+                                      }),
+                                    ],
+                                  }),
+                                  (0, B.jsx)(z, {
+                                    className: `ml-auto w-5 h-5 ${U ? `text-mc-gold` : `text-slate-600`}`,
+                                  }),
+                                ],
+                              }),
+                            }),
+                            U &&
+                              (0, B.jsx)(gt, {
+                                slots: Ft,
+                                onChange: It,
+                                resultCount: Lt,
+                                onResultCountChange: Rt,
+                                shapeless: zt,
+                                onShapelessChange: Bt,
+                                cartItems: [...e, ...n],
+                              }),
+                            (0, B.jsxs)(`div`, {
+                              className: `md:col-span-2 border-t-2 border-mc-border pt-4 mt-2 flex justify-end gap-3`,
+                              children: [
+                                (0, B.jsx)(`button`, {
+                                  type: `button`,
+                                  onClick: jn,
+                                  className: `px-5 py-2.5 bg-mc-slot hover:bg-slate-700 rounded text-sm transition-colors border border-mc-border cursor-pointer font-pixel tracking-wider`,
+                                  children: `Cancelar`,
+                                }),
+                                (0, B.jsx)(`button`, {
+                                  type: `submit`,
+                                  className: `px-6 py-2.5 bg-mc-green hover:bg-mc-green-hover text-white rounded transition-colors border-b-4 border-orange-950 active:border-b-0 active:translate-y-0.5 cursor-pointer font-pixel tracking-wider`,
+                                  children: o
+                                    ? `Actualizar ├â┬ìtem`
+                                    : `Guardar ├â┬ìtem`,
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      }),
+                    ],
+                  })
+                : (0, B.jsxs)(`div`, {
+                    className: `flex-1 bg-mc-panel rounded-lg border-2 border-mc-border p-6 flex flex-col shadow-2xl overflow-hidden`,
+                    children: [
+                      (0, B.jsxs)(`div`, {
+                        className: `flex justify-between items-center border-b-2 border-mc-border pb-4 mb-6 shrink-0`,
+                        children: [
+                          (0, B.jsxs)(`div`, {
+                            className: `flex items-center gap-2`,
+                            children: [
+                              (0, B.jsx)(te, {
+                                className: `w-6 h-6 text-sky-400`,
+                              }),
+                              (0, B.jsxs)(`div`, {
+                                children: [
+                                  (0, B.jsx)(`h2`, {
+                                    className: `font-pixel text-3xl text-sky-400`,
+                                    children: o
+                                      ? `Editar Bloque`
+                                      : `Crear Nuevo Bloque`,
+                                  }),
+                                  (0, B.jsx)(`p`, {
+                                    className: `text-xs text-slate-400`,
+                                    children: o
+                                      ? `Modifica las propiedades del bloque`
+                                      : `Define las propiedades del bloque`,
+                                  }),
+                                ],
+                              }),
+                            ],
+                          }),
+                          (0, B.jsxs)(`button`, {
+                            type: `button`,
+                            onClick: jn,
+                            className: `px-3 py-1.5 bg-mc-slot hover:bg-slate-700 rounded text-xs transition-colors cursor-pointer border border-mc-border flex items-center gap-1.5`,
+                            children: [
+                              (0, B.jsx)(j, { className: `w-3.5 h-3.5` }),
+                              ` Volver al inicio`,
+                            ],
+                          }),
+                        ],
+                      }),
+                      (0, B.jsx)(`form`, {
+                        onSubmit: Tn,
+                        className: `flex-1 overflow-y-auto pr-2`,
+                        children: (0, B.jsxs)(`div`, {
+                          className: `grid grid-cols-1 md:grid-cols-2 gap-6`,
+                          children: [
+                            (0, B.jsxs)(`div`, {
+                              className: `space-y-4`,
+                              children: [
+                                (0, B.jsxs)(`div`, {
+                                  children: [
+                                    (0, B.jsx)(V, {
+                                      required: !0,
+                                      children: `ID del Bloque`,
+                                    }),
+                                    (0, B.jsx)(ut, {
+                                      value: D,
+                                      onChange: fn,
+                                      placeholder: `ej. bloque_magico`,
+                                      className: `font-mono text-sm`,
+                                      required: !0,
+                                    }),
+                                    lt
+                                      ? (0, B.jsxs)(`span`, {
+                                          className: `text-xs text-rose-400 flex items-center gap-1 mt-1`,
+                                          children: [
+                                            (0, B.jsx)(fe, {
+                                              className: `w-3.5 h-3.5`,
+                                            }),
+                                            lt,
+                                          ],
+                                        })
+                                      : (0, B.jsx)(`span`, {
+                                          className: `text-[10px] text-slate-500 block mt-1`,
+                                          children: `Solo min├â┬║sculas y guiones bajos`,
+                                        }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  children: [
+                                    (0, B.jsx)(V, {
+                                      required: !0,
+                                      children: `Nombre In-Game`,
+                                    }),
+                                    (0, B.jsx)(ut, {
+                                      value: k,
+                                      onChange: (e) => ee(e.target.value),
+                                      placeholder: `ej. Bloque M├â┬ígico`,
+                                      required: !0,
+                                    }),
+                                  ],
+                                }),
+                                (0, B.jsxs)(`div`, {
+                                  className: `bg-mc-dark p-4 rounded border-2 border-mc-border space-y-3`,
+                                  children: [
+                                    (0, B.jsx)(`span`, {
+                                      className: `text-xs font-semibold text-sky-400 uppercase tracking-wider block`,
+                                      children: `Propiedades del Bloque`,
+                                    }),
+                                    (0, B.jsxs)(`div`, {
+                                      children: [
+                                        (0, B.jsx)(V, {
+                                          children: `Forma del Bloque`,
+                                        }),
+                                        (0, B.jsxs)(ft, {
+                                          value: We,
+                                          onChange: (e) => Ge(e.target.value),
+                                          children: [
+                                            (0, B.jsx)(`option`, {
+                                              value: `block`,
+                                              children: `Bloque Est├â┬índar ├ó┬Å┬╣├»┬©┬Å`,
+                                            }),
+                                            (0, B.jsx)(`option`, {
+                                              value: `slab`,
+                                              children: `Losa / Slab ├░┼©┼¢┬┤`,
+                                            }),
+                                          ],
+                                        }),
+                                      ],
+                                    }),
+                                    (0, B.jsxs)(`div`, {
+                                      className: `grid grid-cols-2 gap-4 pt-2 border-t border-mc-border/40`,
+                                      children: [
+                                        (0, B.jsxs)(`div`, {
+                                          children: [
+                                            (0, B.jsx)(V, {
+                                              children: `Dureza (Hardness)`,
+                                            }),
+                                            (0, B.jsx)(dt, {
+                                              value: Oe,
+                                              onChange: (e) =>
+                                                ke(e.target.value),
+                                              placeholder: `2.0`,
+                                              step: `0.1`,
+                                              min: `0`,
+                                            }),
+                                            (0, B.jsx)(`span`, {
+                                              className: `text-[9px] text-slate-500 block mt-1`,
+                                              children: `0.5: tierra ├é┬À 2.0: roca ├é┬À 50.0: obsidiana`,
+                                            }),
+                                          ],
+                                        }),
+                                        (0, B.jsxs)(`div`, {
+                                          children: [
+                                            (0, B.jsx)(V, {
+                                              children: `Luminosidad (0├óÔé¼ÔÇ£15)`,
+                                            }),
+                                            (0, B.jsx)(dt, {
+                                              value: be,
+                                              onChange: (e) =>
+                                                xe(e.target.value),
+                                              placeholder: `0`,
+                                              min: `0`,
+                                              max: `15`,
+                                            }),
+                                            (0, B.jsx)(`span`, {
+                                              className: `text-[9px] text-slate-500 block mt-1`,
+                                              children: `0: sin luz ├é┬À 15: antorcha`,
+                                            }),
+                                          ],
+                                        }),
+                                      ],
+                                    }),
+                                    (0, B.jsxs)(`div`, {
+                                      className: `pt-2 border-t border-mc-border/40 space-y-2`,
+                                      children: [
+                                        (0, B.jsx)(pt, {
+                                          checked: ge,
+                                          onChange: _e,
+                                          icon: (0, B.jsx)(A, {
+                                            className: `w-4 h-4 text-amber-400`,
+                                          }),
+                                          label: `Tiene gravedad (como la arena)`,
+                                        }),
+                                        (0, B.jsx)(pt, {
+                                          checked: ve,
+                                          onChange: ye,
+                                          icon: (0, B.jsx)(oe, {
+                                            className: `w-4 h-4 text-slate-300`,
+                                          }),
+                                          label: `A prueba de explosiones`,
+                                        }),
+                                        (0, B.jsx)(pt, {
+                                          checked: Ae,
+                                          onChange: je,
+                                          icon: (0, B.jsx)(M, {
+                                            className: `w-4 h-4 text-sky-300`,
+                                          }),
+                                          label: `Es transparente (tipo cristal)`,
+                                        }),
+                                      ],
+                                    }),
+                                    (0, B.jsxs)(`div`, {
+                                      className: `pt-2 border-t border-mc-border/40 space-y-3`,
+                                      children: [
+                                        (0, B.jsxs)(`div`, {
+                                          children: [
+                                            (0, B.jsx)(V, {
+                                              children: `Grupo de sonidos (Sound Type)`,
+                                            }),
+                                            (0, B.jsxs)(ft, {
+                                              value: Me,
+                                              onChange: (e) =>
+                                                Ne(e.target.value),
+                                              children: [
+                                                (0, B.jsx)(`option`, {
+                                                  value: `STONE`,
+                                                  children: `Piedra ├░┼©┬º┬▒`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `WOOD`,
+                                                  children: `Madera ├░┼©┬¬┬Á`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `METAL`,
+                                                  children: `Metal ├ó┼íÔäó├»┬©┬Å`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `GLASS`,
+                                                  children: `Cristal ├░┼©ÔÇÖ┼¢`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `SAND`,
+                                                  children: `Arena ├ó┬Å┬│`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `GRAVEL`,
+                                                  children: `Grava ├░┼©┬¬┬¿`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `GRASS`,
+                                                  children: `Hierba ├░┼©┼Æ┬┐`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `SLIME`,
+                                                  children: `Limo ├░┼©┼©┬ó`,
+                                                }),
+                                              ],
+                                            }),
+                                          ],
+                                        }),
+                                        (0, B.jsxs)(`div`, {
+                                          children: [
+                                            (0, B.jsx)(pt, {
+                                              checked: Pe,
+                                              onChange: Fe,
+                                              icon: (0, B.jsx)(I, {
+                                                className: `w-4 h-4 text-orange-500`,
+                                              }),
+                                              label: `Es inflamable (puede quemarse)`,
+                                            }),
+                                            Pe &&
+                                              (0, B.jsxs)(`div`, {
+                                                className: `grid grid-cols-2 gap-4 mt-2 p-2.5 bg-black/40 rounded border border-orange-900/30 animate-in fade-in slide-in-from-top-1 duration-200`,
+                                                children: [
+                                                  (0, B.jsxs)(`div`, {
+                                                    children: [
+                                                      (0, B.jsx)(V, {
+                                                        children: `Velocidad quemado`,
+                                                      }),
+                                                      (0, B.jsx)(dt, {
+                                                        value: Ie,
+                                                        onChange: (e) =>
+                                                          Le(e.target.value),
+                                                        min: `1`,
+                                                        max: `100`,
+                                                      }),
+                                                      (0, B.jsx)(`span`, {
+                                                        className: `text-[8px] text-slate-500 block`,
+                                                        children: `20: madera ├é┬À 100: lana`,
+                                                      }),
+                                                    ],
+                                                  }),
+                                                  (0, B.jsxs)(`div`, {
+                                                    children: [
+                                                      (0, B.jsx)(V, {
+                                                        children: `Ignici├â┬│n f├â┬ícil`,
+                                                      }),
+                                                      (0, B.jsx)(dt, {
+                                                        value: Re,
+                                                        onChange: (e) =>
+                                                          ze(e.target.value),
+                                                        min: `1`,
+                                                        max: `100`,
+                                                      }),
+                                                      (0, B.jsx)(`span`, {
+                                                        className: `text-[8px] text-slate-500 block`,
+                                                        children: `5: madera ├é┬À 60: lana`,
+                                                      }),
+                                                    ],
+                                                  }),
+                                                ],
+                                              }),
+                                          ],
+                                        }),
+                                      ],
+                                    }),
+                                    (0, B.jsxs)(`div`, {
+                                      className: `pt-2 border-t border-mc-border space-y-3`,
+                                      children: [
+                                        (0, B.jsx)(`span`, {
+                                          className: `text-xs font-semibold text-sky-400 uppercase tracking-wider block`,
+                                          children: `Miner├â┬¡a y Drops`,
+                                        }),
+                                        (0, B.jsxs)(`div`, {
+                                          className: `grid grid-cols-2 gap-4`,
+                                          children: [
+                                            (0, B.jsxs)(`div`, {
+                                              children: [
+                                                (0, B.jsx)(V, {
+                                                  children: `Herramienta recomendada`,
+                                                }),
+                                                (0, B.jsxs)(ft, {
+                                                  value: Ee,
+                                                  onChange: (e) =>
+                                                    De(e.target.value),
+                                                  children: [
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `none`,
+                                                      children: `Ninguna (Mano)`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `pickaxe`,
+                                                      children: `Pico ├óÔÇ║┬Å├»┬©┬Å`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `axe`,
+                                                      children: `Hacha ├░┼©┬¬ÔÇ£`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `shovel`,
+                                                      children: `Pala ├░┼©┬º┬╣`,
+                                                    }),
+                                                  ],
+                                                }),
+                                              ],
+                                            }),
+                                            (0, B.jsxs)(`div`, {
+                                              children: [
+                                                (0, B.jsx)(V, {
+                                                  children: `Nivel requerido`,
+                                                }),
+                                                (0, B.jsxs)(ft, {
+                                                  value: Be,
+                                                  onChange: (e) =>
+                                                    Ve(e.target.value),
+                                                  children: [
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `none`,
+                                                      children: `Ninguno (Madera)`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `stone`,
+                                                      children: `Piedra ├░┼©┬¬┬¿`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `iron`,
+                                                      children: `Hierro ├░┼©┬¬Ôäó`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `diamond`,
+                                                      children: `Diamante ├░┼©ÔÇÖ┼¢`,
+                                                    }),
+                                                    (0, B.jsx)(`option`, {
+                                                      value: `netherite`,
+                                                      children: `Netherite ├░┼©ÔÇô┬ñ`,
+                                                    }),
+                                                  ],
+                                                }),
+                                              ],
+                                            }),
+                                          ],
+                                        }),
+                                        (0, B.jsx)(pt, {
+                                          checked: He,
+                                          onChange: Ue,
+                                          icon: (0, B.jsx)(ce, {
+                                            className: `w-4 h-4 text-violet-400`,
+                                          }),
+                                          label: `Requiere toque de seda para soltarse`,
+                                        }),
+                                        (0, B.jsxs)(`div`, {
+                                          children: [
+                                            (0, B.jsx)(V, {
+                                              children: `Loot dropeado al romperse`,
+                                            }),
+                                            (0, B.jsxs)(ft, {
+                                              value: Se,
+                                              onChange: (e) => {
+                                                Ce(e.target.value),
+                                                  e.target.value !== `custom` &&
+                                                    Te(``);
+                                              },
+                                              children: [
+                                                (0, B.jsx)(`option`, {
+                                                  value: `self`,
+                                                  children: `S├â┬¡ mismo (El propio bloque)`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `nothing`,
+                                                  children: `Nada`,
+                                                }),
+                                                (0, B.jsx)(`option`, {
+                                                  value: `custom`,
+                                                  children: `Otro ├â┬¡tem o bloque...`,
+                                                }),
+                                              ],
+                                            }),
+                                          ],
+                                        }),
+                                        Se === `custom` &&
+                                          (0, B.jsxs)(`div`, {
+                                            className: `animate-in fade-in slide-in-from-top-1 duration-200`,
+                                            children: [
+                                              (0, B.jsx)(V, {
+                                                required: !0,
+                                                children: `Seleccionar Item / Bloque`,
+                                              }),
+                                              (0, B.jsxs)(ft, {
+                                                value: we,
+                                                onChange: (e) =>
+                                                  Te(e.target.value),
+                                                children: [
+                                                  (0, B.jsx)(`option`, {
+                                                    value: ``,
+                                                    children: `-- Elige un ├â┬¡tem o bloque --`,
+                                                  }),
+                                                  (0, B.jsxs)(`optgroup`, {
+                                                    label: `Tus ├â┬¡tems y bloques creados`,
+                                                    children: [
+                                                      e.map((e) =>
+                                                        (0, B.jsxs)(
+                                                          `option`,
+                                                          {
+                                                            value: `mod:${e.id}`,
+                                                            children: [
+                                                              `mod:`,
+                                                              e.id,
+                                                              ` (`,
+                                                              e.name,
+                                                              `)`,
+                                                            ],
+                                                          },
+                                                          `mod:${e.id}`,
+                                                        ),
+                                                      ),
+                                                      n.map((e) =>
+                                                        (0, B.jsxs)(
+                                                          `option`,
+                                                          {
+                                                            value: `mod:${e.id}`,
+                                                            children: [
+                                                              `mod:`,
+                                                              e.id,
+                                                              ` (`,
+                                                              e.name,
+                                                              `)`,
+                                                            ],
+                                                          },
+                                                          `mod:${e.id}`,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  }),
+                                                  (0, B.jsx)(`optgroup`, {
+                                                    label: `Minecraft Vanilla`,
+                                                    children: ct.map((e) =>
+                                                      (0, B.jsx)(
+                                                        `option`,
+                                                        {
+                                                          value: e,
+                                                          children: e,
+                                                        },
+                                                        e,
+                                                      ),
+                                                    ),
+                                                  }),
+                                                ],
+                                              }),
+                                            ],
+                                          }),
+                                      ],
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            }),
+                            (0, B.jsxs)(`div`, {
+                              className: `flex flex-col gap-4`,
+                              children: [
+                                We === `block`
+                                  ? (0, B.jsxs)(B.Fragment, {
+                                      children: [
+                                        (0, B.jsxs)(`label`, {
+                                          className: `block text-sm font-semibold text-slate-300`,
+                                          children: [
+                                            `Textura (.png, 16├âÔÇö16 o 32├âÔÇö32, <50KB) `,
+                                            (0, B.jsx)(`span`, {
+                                              className: `text-rose-500`,
+                                              children: `*`,
+                                            }),
+                                          ],
+                                        }),
+                                        (0, B.jsxs)(`div`, {
+                                          className: `flex-1 flex flex-col items-center justify-center border-2 border-dashed border-mc-border bg-mc-dark rounded-lg p-6 text-center relative hover:border-sky-500 transition-colors group min-h-[180px]`,
+                                          children: [
+                                            (0, B.jsx)(`input`, {
+                                              type: `file`,
+                                              ref: Tt,
+                                              onChange: bn,
+                                              accept: `.png`,
+                                              className: `absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10`,
+                                              required: !P && !me,
+                                            }),
+                                            se
+                                              ? (0, B.jsxs)(`div`, {
+                                                  className: `flex flex-col items-center gap-3`,
+                                                  children: [
+                                                    (0, B.jsx)(`div`, {
+                                                      className: `w-40 h-40 bg-mc-slot border-4 border-mc-border rounded flex items-center justify-center shadow-inner overflow-hidden`,
+                                                      children: (0, B.jsx)(_t, {
+                                                        textureUrl: se,
+                                                        variant: We,
+                                                        size: `lg`,
+                                                      }),
+                                                    }),
+                                                    (0, B.jsxs)(`span`, {
+                                                      className: `text-xs text-emerald-400 font-semibold flex items-center gap-1`,
+                                                      children: [
+                                                        (0, B.jsx)(N, {
+                                                          className: `w-3.5 h-3.5`,
+                                                        }),
+                                                        ` Textura v├â┬ílida cargada`,
+                                                      ],
+                                                    }),
+                                                    (0, B.jsx)(`span`, {
+                                                      className: `text-[10px] text-slate-500 truncate max-w-[200px]`,
+                                                      children: P
+                                                        ? `${P.name} (${(P.size / 1024).toFixed(1)} KB)`
+                                                        : `Textura existente (haz clic para reemplazar)`,
+                                                    }),
+                                                  ],
+                                                })
+                                              : (0, B.jsxs)(`div`, {
+                                                  className: `flex flex-col items-center gap-2`,
+                                                  children: [
+                                                    (0, B.jsx)(`div`, {
+                                                      className: `p-3 bg-mc-slot rounded-full border border-mc-border group-hover:scale-110 transition-transform duration-300`,
+                                                      children: (0, B.jsx)(pe, {
+                                                        className: `w-6 h-6 text-slate-400`,
+                                                      }),
+                                                    }),
+                                                    (0, B.jsx)(`span`, {
+                                                      className: `text-xs font-semibold text-slate-300`,
+                                                      children: `Haz clic o arrastra un archivo PNG`,
+                                                    }),
+                                                    (0, B.jsx)(`span`, {
+                                                      className: `text-[10px] text-slate-500`,
+                                                      children: `Solo 16├âÔÇö16 o 32├âÔÇö32 ├é┬À M├â┬íx. 50 KB`,
+                                                    }),
+                                                  ],
+                                                }),
+                                          ],
+                                        }),
+                                      ],
+                                    })
+                                  : (0, B.jsxs)(`div`, {
+                                      className: `space-y-4`,
+                                      children: [
+                                        (0, B.jsxs)(`div`, {
+                                          className: `grid grid-cols-2 gap-4`,
+                                          children: [
+                                            (0, B.jsxs)(`div`, {
+                                              className: `space-y-2`,
+                                              children: [
+                                                (0, B.jsxs)(`label`, {
+                                                  className: `block text-xs font-semibold text-slate-300`,
+                                                  children: [
+                                                    `Textura Superior `,
+                                                    (0, B.jsx)(`span`, {
+                                                      className: `text-rose-500`,
+                                                      children: `*`,
+                                                    }),
+                                                  ],
+                                                }),
+                                                (0, B.jsxs)(`div`, {
+                                                  className: `h-32 flex flex-col items-center justify-center border-2 border-dashed border-mc-border bg-mc-dark rounded-lg p-2 text-center relative hover:border-sky-500 transition-colors group`,
+                                                  children: [
+                                                    (0, B.jsx)(`input`, {
+                                                      type: `file`,
+                                                      ref: Et,
+                                                      onChange: (e) =>
+                                                        xn(e, `top`),
+                                                      accept: `.png`,
+                                                      className: `absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10`,
+                                                      required: !Je && !Qe,
+                                                    }),
+                                                    Xe
+                                                      ? (0, B.jsxs)(`div`, {
+                                                          className: `flex flex-col items-center gap-1`,
+                                                          children: [
+                                                            (0, B.jsx)(`div`, {
+                                                              className: `w-12 h-12 bg-mc-slot border-2 border-mc-border rounded flex items-center justify-center shadow-inner overflow-hidden`,
+                                                              children: (0,
+                                                              B.jsx)(`img`, {
+                                                                src: Xe,
+                                                                alt: `Top Preview`,
+                                                                className: `w-8 h-8 object-contain`,
+                                                                style: {
+                                                                  imageRendering: `pixelated`,
+                                                                },
+                                                              }),
+                                                            }),
+                                                            (0, B.jsx)(`span`, {
+                                                              className: `text-[9px] text-emerald-400 font-semibold font-pixel`,
+                                                              children: `Top OK`,
+                                                            }),
+                                                          ],
+                                                        })
+                                                      : (0, B.jsxs)(`div`, {
+                                                          className: `flex flex-col items-center`,
+                                                          children: [
+                                                            (0, B.jsx)(pe, {
+                                                              className: `w-4 h-4 text-slate-500`,
+                                                            }),
+                                                            (0, B.jsx)(`span`, {
+                                                              className: `text-[10px] text-slate-400`,
+                                                              children: `Subir Top PNG`,
+                                                            }),
+                                                          ],
+                                                        }),
+                                                  ],
+                                                }),
+                                              ],
+                                            }),
+                                            (0, B.jsxs)(`div`, {
+                                              className: `space-y-2`,
+                                              children: [
+                                                (0, B.jsxs)(`label`, {
+                                                  className: `block text-xs font-semibold text-slate-300`,
+                                                  children: [
+                                                    `Textura Lateral `,
+                                                    (0, B.jsx)(`span`, {
+                                                      className: `text-rose-500`,
+                                                      children: `*`,
+                                                    }),
+                                                  ],
+                                                }),
+                                                (0, B.jsxs)(`div`, {
+                                                  className: `h-32 flex flex-col items-center justify-center border-2 border-dashed border-mc-border bg-mc-dark rounded-lg p-2 text-center relative hover:border-sky-500 transition-colors group`,
+                                                  children: [
+                                                    (0, B.jsx)(`input`, {
+                                                      type: `file`,
+                                                      ref: Dt,
+                                                      onChange: (e) =>
+                                                        xn(e, `side`),
+                                                      accept: `.png`,
+                                                      className: `absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10`,
+                                                      required: !et && !it,
+                                                    }),
+                                                    nt
+                                                      ? (0, B.jsxs)(`div`, {
+                                                          className: `flex flex-col items-center gap-1`,
+                                                          children: [
+                                                            (0, B.jsx)(`div`, {
+                                                              className: `w-12 h-12 bg-mc-slot border-2 border-mc-border rounded flex items-center justify-center shadow-inner overflow-hidden`,
+                                                              children: (0,
+                                                              B.jsx)(`img`, {
+                                                                src: nt,
+                                                                alt: `Side Preview`,
+                                                                className: `w-8 h-8 object-contain`,
+                                                                style: {
+                                                                  imageRendering: `pixelated`,
+                                                                },
+                                                              }),
+                                                            }),
+                                                            (0, B.jsx)(`span`, {
+                                                              className: `text-[9px] text-emerald-400 font-semibold font-pixel`,
+                                                              children: `Side OK`,
+                                                            }),
+                                                          ],
+                                                        })
+                                                      : (0, B.jsxs)(`div`, {
+                                                          className: `flex flex-col items-center`,
+                                                          children: [
+                                                            (0, B.jsx)(pe, {
+                                                              className: `w-4 h-4 text-slate-500`,
+                                                            }),
+                                                            (0, B.jsx)(`span`, {
+                                                              className: `text-[10px] text-slate-400`,
+                                                              children: `Subir Side PNG`,
+                                                            }),
+                                                          ],
+                                                        }),
+                                                  ],
+                                                }),
+                                              ],
+                                            }),
+                                          ],
+                                        }),
+                                        (Xe || nt) &&
+                                          (0, B.jsxs)(`div`, {
+                                            className: `flex flex-col items-center justify-center p-4 bg-mc-dark rounded-lg border border-mc-border`,
+                                            children: [
+                                              (0, B.jsx)(_t, {
+                                                textureUrl: nt,
+                                                topUrl: Xe,
+                                                sideUrl: nt,
+                                                variant: `slab`,
+                                                size: `lg`,
+                                              }),
+                                              (0, B.jsx)(`span`, {
+                                                className: `text-[10px] text-slate-500 mt-2`,
+                                                children: `Vista previa 3D de la Losa`,
+                                              }),
+                                            ],
+                                          }),
+                                      ],
+                                    }),
+                                ht &&
+                                  (0, B.jsxs)(`div`, {
+                                    className: `p-3 bg-rose-950/40 border border-rose-900 rounded flex gap-2 items-start text-xs text-rose-300`,
+                                    children: [
+                                      (0, B.jsx)(oe, {
+                                        className: `w-4 h-4 shrink-0 text-rose-400 mt-0.5`,
+                                      }),
+                                      (0, B.jsx)(`span`, { children: ht }),
+                                    ],
+                                  }),
+                              ],
+                            }),
+                            (0, B.jsx)(`div`, {
+                              className: `md:col-span-2`,
+                              children: (0, B.jsxs)(`div`, {
+                                onClick: () => Pt((e) => !e),
+                                className: `flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all ${U ? `bg-mc-slot border-mc-gold/60` : `bg-mc-dark border-mc-border hover:border-slate-500`}`,
+                                children: [
+                                  (0, B.jsx)(`div`, {
+                                    className: `w-11 h-6 rounded-full relative transition-colors shrink-0 ${U ? `bg-mc-green` : `bg-slate-600`}`,
+                                    children: (0, B.jsx)(`div`, {
+                                      className: `absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all ${U ? `left-6` : `left-1`}`,
+                                    }),
+                                  }),
+                                  (0, B.jsxs)(`div`, {
+                                    children: [
+                                      (0, B.jsxs)(`div`, {
+                                        className: `flex items-center gap-2`,
+                                        children: [
+                                          (0, B.jsx)(R, {
+                                            className: `w-4 h-4 ${U ? `text-mc-gold` : `text-slate-400`}`,
+                                          }),
+                                          (0, B.jsx)(`span`, {
+                                            className: `text-sm font-semibold ${U ? `text-slate-100` : `text-slate-400`}`,
+                                            children: `├é┬┐Este bloque se puede craftear?`,
+                                          }),
+                                        ],
+                                      }),
+                                      (0, B.jsx)(`p`, {
+                                        className: `text-[10px] text-slate-500 mt-0.5`,
+                                        children: U
+                                          ? `Configura la receta en la mesa de crafteo a continuaci├â┬│n.`
+                                          : `Activa para definir la receta de crafteo.`,
+                                      }),
+                                    ],
+                                  }),
+                                  (0, B.jsx)(z, {
+                                    className: `ml-auto w-5 h-5 ${U ? `text-mc-gold` : `text-slate-600`}`,
+                                  }),
+                                ],
+                              }),
+                            }),
+                            U &&
+                              (0, B.jsx)(gt, {
+                                slots: Ft,
+                                onChange: It,
+                                resultCount: Lt,
+                                onResultCountChange: Rt,
+                                shapeless: zt,
+                                onShapelessChange: Bt,
+                                cartItems: [...e, ...n],
+                              }),
+                            (0, B.jsxs)(`div`, {
+                              className: `md:col-span-2 border-t-2 border-mc-border pt-4 mt-2 flex justify-end gap-3`,
+                              children: [
+                                (0, B.jsx)(`button`, {
+                                  type: `button`,
+                                  onClick: jn,
+                                  className: `px-5 py-2.5 bg-mc-slot hover:bg-slate-700 rounded text-sm transition-colors border border-mc-border cursor-pointer font-pixel tracking-wider`,
+                                  children: `Cancelar`,
+                                }),
+                                (0, B.jsx)(`button`, {
+                                  type: `submit`,
+                                  className: `px-6 py-2.5 bg-sky-700 hover:bg-sky-600 text-white rounded transition-colors border-b-4 border-sky-950 active:border-b-0 active:translate-y-0.5 cursor-pointer font-pixel tracking-wider`,
+                                  children: o
+                                    ? `Actualizar Bloque`
+                                    : `Guardar Bloque`,
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      }),
+                    ],
+                  })
+              : (0, B.jsxs)(`div`, {
+                  className: `flex-1 flex flex-col items-center justify-center text-center p-8 bg-mc-panel rounded-lg border-2 border-mc-border shadow-2xl group`,
+                  children: [
+                    (0, B.jsx)(`div`, {
+                      className: `w-20 h-20 bg-mc-slot flex items-center justify-center rounded-lg border-4 border-mc-border shadow-inner mb-6 transition-transform group-hover:scale-110 duration-300`,
+                      children: (0, B.jsx)(M, {
+                        className: `w-10 h-10 text-mc-gold`,
+                      }),
+                    }),
+                    (0, B.jsx)(`h2`, {
+                      className: `font-pixel text-4xl text-mc-gold mb-3 tracking-wider`,
+                      children: `├é┬íBienvenido a Lazy Forge!`,
+                    }),
+                    (0, B.jsx)(`p`, {
+                      className: `max-w-md text-slate-400 mb-8 leading-relaxed`,
+                      children: `Dise├â┬▒a elementos personalizados para Minecraft. Forja herramientas, armas, comidas, bloques o proyectiles y desc├â┬írgalos con un instalador autom├â┬ítico que compilar├â┬í el mod y limpiar├â┬í el c├â┬│digo por ti.`,
+                    }),
+                    (0, B.jsxs)(`div`, {
+                      className: `flex flex-col sm:flex-row gap-4`,
+                      children: [
+                        (0, B.jsxs)(`button`, {
+                          onClick: () => a(`item`),
+                          className: `group/btn px-8 py-4 bg-mc-green hover:bg-mc-green-hover text-white font-pixel text-2xl tracking-wider rounded border-b-4 border-orange-950 active:border-b-0 active:translate-y-1 transition-all shadow-md flex items-center gap-3 cursor-pointer`,
+                          children: [
+                            (0, B.jsx)(ae, {
+                              className: `w-6 h-6 transition-transform group-hover/btn:rotate-90 duration-300`,
+                            }),
+                            `A├â┬▒adir Nuevo ├â┬ìtem`,
+                          ],
+                        }),
+                        (0, B.jsxs)(`button`, {
+                          onClick: () => a(`block`),
+                          className: `group/btn px-8 py-4 bg-sky-700 hover:bg-sky-600 text-white font-pixel text-2xl tracking-wider rounded border-b-4 border-sky-950 active:border-b-0 active:translate-y-1 transition-all shadow-md flex items-center gap-3 cursor-pointer`,
+                          children: [
+                            (0, B.jsx)(te, {
+                              className: `w-6 h-6 transition-transform group-hover/btn:scale-110 duration-300`,
+                            }),
+                            `A├â┬▒adir Nuevo Bloque`,
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+          }),
+          (0, B.jsxs)(`section`, {
+            className: `w-full md:w-[30%] bg-mc-panel p-6 flex flex-col gap-4 min-h-[500px] md:min-h-0`,
+            children: [
+              (0, B.jsxs)(`div`, {
+                className: `bg-mc-dark border-2 border-mc-border rounded-lg p-4 space-y-3`,
+                children: [
+                  (0, B.jsx)(`span`, {
+                    className: `text-xs font-semibold text-mc-gold uppercase tracking-wider block`,
+                    children: `Configuraci├â┬│n del Mod`,
+                  }),
+                  (0, B.jsxs)(`div`, {
+                    children: [
+                      (0, B.jsx)(V, {
+                        required: !0,
+                        children: `Nombre del Mod`,
+                      }),
+                      (0, B.jsx)(ut, {
+                        value: Ut,
+                        onChange: (e) => Wt(e.target.value),
+                        placeholder: `ej. Mi Mod Incre├â┬¡ble`,
+                      }),
+                    ],
+                  }),
+                  (0, B.jsxs)(`div`, {
+                    children: [
+                      (0, B.jsx)(V, {
+                        required: !0,
+                        children: `ID del Mod (MOD_ID)`,
+                      }),
+                      (0, B.jsx)(ut, {
+                        value: Gt,
+                        onChange: dn,
+                        placeholder: `ej. mi_mod`,
+                        className: `font-mono text-sm`,
+                      }),
+                      qt
+                        ? (0, B.jsxs)(`span`, {
+                            className: `text-[10px] text-rose-400 flex items-center gap-1 mt-1`,
+                            children: [
+                              (0, B.jsx)(fe, { className: `w-3 h-3` }),
+                              ` `,
+                              qt,
+                            ],
+                          })
+                        : (0, B.jsx)(`span`, {
+                            className: `text-[9px] text-slate-500 block mt-0.5`,
+                            children: `Solo min├â┬║sculas y guiones bajos.`,
+                          }),
+                    ],
+                  }),
+                  (0, B.jsxs)(`div`, {
+                    className: `pt-2 border-t border-mc-border/40`,
+                    children: [
+                      (0, B.jsx)(V, {
+                        children: `Icono de Solapa Creativa (PNG)`,
+                      }),
+                      (0, B.jsxs)(`div`, {
+                        className: `flex items-center gap-3`,
+                        children: [
+                          (0, B.jsx)(`div`, {
+                            className: `w-10 h-10 bg-mc-slot border border-mc-border rounded flex items-center justify-center relative overflow-hidden shrink-0`,
+                            children: Zt
+                              ? (0, B.jsx)(`img`, {
+                                  src: Zt,
+                                  alt: `Tab Icon`,
+                                  className: `w-8 h-8 object-contain`,
+                                  style: { imageRendering: `pixelated` },
+                                })
+                              : (0, B.jsx)(pe, {
+                                  className: `w-5 h-5 text-slate-500`,
+                                }),
+                          }),
+                          (0, B.jsxs)(`div`, {
+                            className: `flex-1 min-w-0`,
+                            children: [
+                              (0, B.jsx)(`input`, {
+                                type: `file`,
+                                ref: rn,
+                                onChange: Sn,
+                                accept: `.png`,
+                                className: `hidden`,
+                              }),
+                              (0, B.jsx)(`button`, {
+                                type: `button`,
+                                onClick: () => rn.current?.click(),
+                                className: `w-full px-2.5 py-1.5 bg-mc-slot hover:bg-slate-700 border border-mc-border rounded text-xs text-slate-300 font-pixel cursor-pointer text-center`,
+                                children: Zt ? `Cambiar` : `Subir Icono`,
+                              }),
+                            ],
+                          }),
+                        ],
+                      }),
+                      tn &&
+                        (0, B.jsx)(`span`, {
+                          className: `text-[9px] text-rose-400 block mt-1`,
+                          children: tn,
+                        }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, B.jsxs)(`div`, {
+                className: `flex justify-between items-center border-b-2 border-mc-border pb-3`,
+                children: [
+                  (0, B.jsx)(`h2`, {
+                    className: `font-pixel text-2xl text-slate-100 tracking-wider`,
+                    children: `Tu Mod`,
+                  }),
+                  (0, B.jsxs)(`div`, {
+                    className: `flex items-center gap-2`,
+                    children: [
+                      (0, B.jsxs)(`div`, {
+                        className: `flex items-center gap-1.5 bg-mc-dark px-2.5 py-1 rounded text-xs border border-mc-border`,
+                        children: [
+                          (0, B.jsx)(`span`, {
+                            className: `font-pixel text-mc-gold text-sm`,
+                            children: e.length,
+                          }),
+                          (0, B.jsx)(`span`, {
+                            className: `text-slate-400`,
+                            children: `├â┬¡tems`,
+                          }),
+                        ],
+                      }),
+                      (0, B.jsxs)(`div`, {
+                        className: `flex items-center gap-1.5 bg-mc-dark px-2.5 py-1 rounded text-xs border border-mc-border`,
+                        children: [
+                          (0, B.jsx)(`span`, {
+                            className: `font-pixel text-sky-400 text-sm`,
+                            children: n.length,
+                          }),
+                          (0, B.jsx)(`span`, {
+                            className: `text-slate-400`,
+                            children: `bloques`,
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, B.jsx)(`div`, {
+                className: `flex-1 overflow-y-auto space-y-3 pr-1 max-h-[450px] md:max-h-none`,
+                children:
+                  Mn === 0
+                    ? (0, B.jsxs)(`div`, {
+                        className: `h-48 border-2 border-dashed border-mc-border rounded flex flex-col items-center justify-center text-center p-4 bg-mc-dark/30 text-slate-500`,
+                        children: [
+                          (0, B.jsx)(M, {
+                            className: `w-8 h-8 mb-2 opacity-50 text-slate-600`,
+                          }),
+                          (0, B.jsx)(`p`, {
+                            className: `text-xs`,
+                            children: `No hay contenido en tu mod todav├â┬¡a.`,
+                          }),
+                          (0, B.jsx)(`p`, {
+                            className: `text-[10px] text-slate-600 mt-1`,
+                            children: `├é┬íA├â┬▒ade tu primer ├â┬¡tem o bloque!`,
+                          }),
+                        ],
+                      })
+                    : (0, B.jsxs)(B.Fragment, {
+                        children: [
+                          n.map((e) =>
+                            (0, B.jsxs)(
+                              `div`,
+                              {
+                                className: `flex items-start justify-between p-3 bg-mc-dark hover:bg-slate-900 rounded border border-sky-900/40 group transition-all`,
+                                children: [
+                                  (0, B.jsxs)(`div`, {
+                                    className: `flex gap-3`,
+                                    children: [
+                                      (0, B.jsx)(`div`, {
+                                        className: `w-12 h-12 bg-mc-slot flex items-center justify-center rounded border border-mc-border shadow-inner shrink-0 overflow-hidden relative`,
+                                        children: (0, B.jsx)(_t, {
+                                          textureUrl:
+                                            e.blockShape === `slab` &&
+                                            e.slabTextureMode === `split`
+                                              ? e.slabSideTextureUrl
+                                              : e.textureUrl,
+                                          topUrl:
+                                            e.blockShape === `slab` &&
+                                            e.slabTextureMode === `split`
+                                              ? e.slabTopTextureUrl
+                                              : void 0,
+                                          sideUrl:
+                                            e.blockShape === `slab` &&
+                                            e.slabTextureMode === `split`
+                                              ? e.slabSideTextureUrl
+                                              : void 0,
+                                          variant: e.blockShape,
+                                          size: `sm`,
+                                        }),
+                                      }),
+                                      (0, B.jsxs)(`div`, {
+                                        className: `min-w-0`,
+                                        children: [
+                                          (0, B.jsxs)(`h4`, {
+                                            className: `text-sm font-bold text-slate-200 truncate flex items-center gap-1.5`,
+                                            children: [
+                                              e.name,
+                                              e.hasGravity &&
+                                                (0, B.jsx)(A, {
+                                                  className: `w-3.5 h-3.5 text-amber-400 shrink-0`,
+                                                }),
+                                              e.explosionResistant &&
+                                                (0, B.jsx)(oe, {
+                                                  className: `w-3.5 h-3.5 text-slate-300 shrink-0`,
+                                                }),
+                                              e.luminance > 0 &&
+                                                (0, B.jsx)(le, {
+                                                  className: `w-3.5 h-3.5 text-yellow-300 shrink-0`,
+                                                }),
+                                            ],
+                                          }),
+                                          (0, B.jsxs)(`p`, {
+                                            className: `text-[10px] text-slate-500 font-mono`,
+                                            children: [`ID: `, e.id],
+                                          }),
+                                          (0, B.jsxs)(`div`, {
+                                            className: `flex flex-wrap gap-1 mt-1`,
+                                            children: [
+                                              (0, B.jsx)(`span`, {
+                                                className: `text-[9px] px-1.5 py-0.5 rounded font-pixel uppercase text-sky-300 bg-sky-950/60`,
+                                                children:
+                                                  e.blockShape === `slab`
+                                                    ? `Losa`
+                                                    : `Bloque`,
+                                              }),
+                                              e.hasGravity &&
+                                                (0, B.jsx)(`span`, {
+                                                  className: `text-[9px] bg-amber-950/50 text-amber-300 px-1.5 py-0.5 rounded font-pixel`,
+                                                  children: `Gravedad`,
+                                                }),
+                                              e.explosionResistant &&
+                                                (0, B.jsx)(`span`, {
+                                                  className: `text-[9px] bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded font-pixel`,
+                                                  children: `Anti-explosi├â┬│n`,
+                                                }),
+                                              e.luminance > 0 &&
+                                                (0, B.jsxs)(`span`, {
+                                                  className: `text-[9px] bg-yellow-950/50 text-yellow-300 px-1.5 py-0.5 rounded font-pixel`,
+                                                  children: [
+                                                    `Luz `,
+                                                    e.luminance,
+                                                  ],
+                                                }),
+                                              e.requiredTool &&
+                                                e.requiredTool !== `none` &&
+                                                (0, B.jsx)(`span`, {
+                                                  className: `text-[9px] bg-[#1e2e3e] text-sky-300 px-1.5 py-0.5 rounded font-pixel`,
+                                                  children:
+                                                    e.requiredTool === `pickaxe`
+                                                      ? `├óÔÇ║┬Å├»┬©┬Å Pico`
+                                                      : e.requiredTool === `axe`
+                                                        ? `├░┼©┬¬ÔÇ£ Hacha`
+                                                        : `├░┼©┬º┬╣ Pala`,
+                                                }),
+                                              e.dropType &&
+                                                e.dropType !== `self` &&
+                                                (0, B.jsxs)(`span`, {
+                                                  className: `text-[9px] bg-rose-950/60 text-rose-300 px-1.5 py-0.5 rounded font-pixel`,
+                                                  children: [
+                                                    `Drop: `,
+                                                    e.dropType === `nothing`
+                                                      ? `Nada`
+                                                      : e.customDrop.replace(
+                                                          `mod:`,
+                                                          ``,
+                                                        ),
+                                                  ],
+                                                }),
+                                              e.recipe &&
+                                                (0, B.jsxs)(`span`, {
+                                                  className: `text-[9px] px-1.5 py-0.5 rounded font-pixel flex items-center gap-0.5 ${e.recipe.shapeless ? `bg-purple-950/50 text-purple-300` : `bg-blue-950/50 text-blue-300`}`,
+                                                  children: [
+                                                    (0, B.jsx)(R, {
+                                                      className: `w-2.5 h-2.5`,
+                                                    }),
+                                                    e.recipe.shapeless
+                                                      ? `Shapeless`
+                                                      : `Shaped`,
+                                                  ],
+                                                }),
+                                            ],
+                                          }),
+                                        ],
+                                      }),
+                                    ],
+                                  }),
+                                  (0, B.jsxs)(`div`, {
+                                    className: `flex gap-0.5 shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 focus-within:opacity-100`,
+                                    children: [
+                                      (0, B.jsx)(`button`, {
+                                        onClick: () => kn(e),
+                                        className: `p-1 hover:bg-sky-950/50 hover:text-sky-400 rounded text-slate-500 transition-colors cursor-pointer`,
+                                        title: `Editar bloque`,
+                                        children: (0, B.jsx)(ie, {
+                                          className: `w-4 h-4`,
+                                        }),
+                                      }),
+                                      (0, B.jsx)(`button`, {
+                                        onClick: () => Dn(e.id),
+                                        className: `p-1 hover:bg-rose-950/50 hover:text-rose-400 rounded text-slate-500 transition-colors cursor-pointer`,
+                                        title: `Eliminar bloque`,
+                                        children: (0, B.jsx)(de, {
+                                          className: `w-4 h-4`,
+                                        }),
+                                      }),
+                                    ],
+                                  }),
+                                ],
+                              },
+                              `block-${e.id}`,
+                            ),
+                          ),
+                          e.map((e) =>
+                            (0, B.jsxs)(
+                              `div`,
+                              {
+                                className: `flex items-start justify-between p-3 bg-mc-dark hover:bg-slate-900 rounded border border-mc-border group transition-all`,
+                                children: [
+                                  (0, B.jsxs)(`div`, {
+                                    className: `flex gap-3`,
+                                    children: [
+                                      (0, B.jsxs)(`div`, {
+                                        className: `w-12 h-12 bg-mc-slot flex items-center justify-center rounded border border-mc-border shadow-inner shrink-0 overflow-hidden relative`,
+                                        children: [
+                                          (0, B.jsx)(`img`, {
+                                            src: e.textureUrl,
+                                            alt: e.name,
+                                            className: `w-8 h-8 object-contain`,
+                                            style: {
+                                              imageRendering: `pixelated`,
+                                            },
+                                          }),
+                                          e.enchantedGlow &&
+                                            (0, B.jsx)(`div`, {
+                                              className: `absolute inset-0 bg-purple-500/20 mix-blend-color-dodge animate-pulse`,
+                                            }),
+                                        ],
+                                      }),
+                                      (0, B.jsxs)(`div`, {
+                                        className: `min-w-0`,
+                                        children: [
+                                          (0, B.jsxs)(`h4`, {
+                                            className: `text-sm font-bold text-slate-200 truncate flex items-center gap-1.5`,
+                                            children: [
+                                              e.name,
+                                              e.immuneToLava &&
+                                                (0, B.jsx)(I, {
+                                                  className: `w-3.5 h-3.5 text-orange-500 shrink-0`,
+                                                }),
+                                            ],
+                                          }),
+                                          (0, B.jsxs)(`p`, {
+                                            className: `text-[10px] text-slate-500 font-mono`,
+                                            children: [`ID: `, e.id],
+                                          }),
+                                          (0, B.jsxs)(`div`, {
+                                            className: `flex flex-wrap gap-1 mt-1`,
+                                            children: [
+                                              (0, B.jsxs)(`span`, {
+                                                className: `text-[9px] bg-mc-slot text-slate-400 px-1.5 py-0.5 rounded font-pixel`,
+                                                children: [`x`, e.stackSize],
+                                              }),
+                                              (0, B.jsx)(`span`, {
+                                                className: `text-[9px] px-1.5 py-0.5 rounded font-pixel uppercase ${Nn(e.category)}`,
+                                                children:
+                                                  e.category ===
+                                                  `Herramienta/Arma`
+                                                    ? (e.toolType ?? `Arma`)
+                                                    : e.category,
+                                              }),
+                                              e.category ===
+                                                `Herramienta/Arma` &&
+                                                e.material &&
+                                                (0, B.jsx)(`span`, {
+                                                  className: `text-[9px] bg-mc-slot text-slate-400 px-1.5 py-0.5 rounded font-pixel`,
+                                                  children: e.material,
+                                                }),
+                                              e.category === `Comida` &&
+                                                e.nutrition != null &&
+                                                (0, B.jsxs)(`span`, {
+                                                  className: `text-[9px] bg-rose-950/50 text-rose-300 px-1.5 py-0.5 rounded font-pixel flex items-center gap-0.5`,
+                                                  children: [
+                                                    (0, B.jsx)(ne, {
+                                                      className: `w-2.5 h-2.5`,
+                                                    }),
+                                                    e.nutrition,
+                                                  ],
+                                                }),
+                                              e.recipe &&
+                                                (0, B.jsxs)(`span`, {
+                                                  className: `text-[9px] px-1.5 py-0.5 rounded font-pixel flex items-center gap-0.5 ${e.recipe.shapeless ? `bg-purple-950/50 text-purple-300` : `bg-blue-950/50 text-blue-300`}`,
+                                                  children: [
+                                                    (0, B.jsx)(R, {
+                                                      className: `w-2.5 h-2.5`,
+                                                    }),
+                                                    e.recipe.shapeless
+                                                      ? `Shapeless`
+                                                      : `Shaped`,
+                                                  ],
+                                                }),
+                                            ],
+                                          }),
+                                        ],
+                                      }),
+                                    ],
+                                  }),
+                                  (0, B.jsxs)(`div`, {
+                                    className: `flex gap-0.5 shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 focus-within:opacity-100`,
+                                    children: [
+                                      (0, B.jsx)(`button`, {
+                                        onClick: () => On(e),
+                                        className: `p-1 hover:bg-amber-950/50 hover:text-mc-gold rounded text-slate-500 transition-colors cursor-pointer`,
+                                        title: `Editar ├â┬¡tem`,
+                                        children: (0, B.jsx)(ie, {
+                                          className: `w-4 h-4`,
+                                        }),
+                                      }),
+                                      (0, B.jsx)(`button`, {
+                                        onClick: () => En(e.id),
+                                        className: `p-1 hover:bg-rose-950/50 hover:text-rose-400 rounded text-slate-500 transition-colors cursor-pointer`,
+                                        title: `Eliminar ├â┬¡tem`,
+                                        children: (0, B.jsx)(de, {
+                                          className: `w-4 h-4`,
+                                        }),
+                                      }),
+                                    ],
+                                  }),
+                                ],
+                              },
+                              e.id,
+                            ),
+                          ),
+                        ],
+                      }),
+              }),
+              (0, B.jsxs)(`div`, {
+                className: `pt-4 border-t-2 border-mc-border mt-auto flex flex-col gap-3`,
+                children: [
+                  (0, B.jsxs)(`div`, {
+                    className: `flex justify-between items-center text-sm px-1`,
+                    children: [
+                      (0, B.jsx)(`span`, {
+                        className: `text-slate-400`,
+                        children: `Total:`,
+                      }),
+                      (0, B.jsx)(`span`, {
+                        className: `font-pixel text-xl text-mc-gold`,
+                        children: Mn,
+                      }),
+                    ],
+                  }),
+                  (0, B.jsxs)(`button`, {
+                    onClick: An,
+                    disabled: Mn === 0 || !Ut.trim() || !Gt.trim() || !!qt,
+                    className: `w-full py-3.5 px-4 font-pixel text-xl tracking-wider rounded border-b-4 flex items-center justify-center gap-2 transition-all shadow-md
+                ${Mn > 0 && Ut.trim() && Gt.trim() && !qt ? `bg-mc-green hover:bg-mc-green-hover text-white border-orange-950 active:border-b-0 active:translate-y-1 cursor-pointer` : `bg-slate-700 text-slate-400 border-slate-900 cursor-not-allowed`}`,
+                    children: [
+                      (0, B.jsx)(F, { className: `w-5 h-5` }),
+                      `Generar y Descargar Mod`,
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      }),
+    ],
+  });
+}

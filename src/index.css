@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=VT323&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-pixel: 'VT323', monospace;
+
+  --color-mc-dark: #07080c;
+  /* Obsidian Deep Dark */
+  --color-mc-panel: #0e1018;
+  /* Solid Steel Plate Dark */
+  --color-mc-slot: #151824;
+  /* Steel Slot Grid */
+  --color-mc-green: #d84b00;
+  /* Glowing Forge Fire Orange/Red */
+  --color-mc-green-hover: #fa6414;
+  /* Burning Ember Orange */
+  --color-mc-gold: #ffaa00;
+  /* Molten Gold Accent */
+  --color-mc-border: #232738;
+  /* Refined Steel Border */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-mc-dark);
+  background-image:
+    radial-gradient(circle at 80% 90%, rgba(216, 75, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 10%, rgba(255, 170, 0, 0.03) 0%, transparent 40%);
+  background-attachment: fixed;
+  color: #f1f5f9;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Premium Forge Styling Utility Classes */
+.forge-glow {
+  box-shadow: 0 0 20px rgba(216, 75, 0, 0.15);
+}
+
+.forge-glow-hover:hover {
+  box-shadow: 0 0 25px rgba(216, 75, 0, 0.25);
+  border-color: rgba(250, 100, 20, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbars for a modern steel look */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090a0f;
+  border-left: 1px solid #1c1f2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232738;
+  border: 2px solid #090a0f;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fa6414;
+}
+
+/* Interactive elements and focus styles */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(250, 100, 20, 0.2);
+}
+
+/* Minecraft slots styling improvement */
+.mc-grid-slot {
+  position: relative;
+  background: rgba(7, 8, 12, 0.6);
+  border: 2px solid #232738;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.mc-grid-slot:hover {
+  border-color: var(--color-mc-gold);
+  background: rgba(255, 170, 0, 0.05);
+}
+
+/* 3D Cube Preview Styling */
+.cube-container {
+  perspective: 600px;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 14s linear infinite;
+}
+
+.cube-face {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.cube-face-front {
+  transform: rotateY(0deg) translateZ(40px);
+}
+
+.cube-face-back {
+  transform: rotateY(180deg) translateZ(40px);
+  filter: brightness(0.6);
+}
+
+.cube-face-left {
+  transform: rotateY(-90deg) translateZ(40px);
+  filter: brightness(0.85);
+}
+
+.cube-face-right {
+  transform: rotateY(90deg) translateZ(40px);
+  filter: brightness(0.85);
+}
+
+.cube-face-top {
+  transform: rotateX(90deg) translateZ(40px);
+  filter: brightness(1.1);
+}
+
+.cube-face-bottom {
+  transform: rotateX(-90deg) translateZ(40px);
+  filter: brightness(0.5);
+}
+
+@keyframes rotateCube {
+  0% {
+    transform: rotateX(-22deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(-22deg) rotateY(360deg);
+  }
+}
+
+/* Slab styles */
+.cube.slab-half .cube-face {
+  height: 40px;
+  top: 40px;
+}
+.cube.slab-half .cube-face-front  { transform: rotateY(  0deg) translateZ(40px); }
+.cube.slab-half .cube-face-back   { transform: rotateY(180deg) translateZ(40px); filter: brightness(0.6); }
+.cube.slab-half .cube-face-left   { transform: rotateY(-90deg) translateZ(40px); filter: brightness(0.85); }
+.cube.slab-half .cube-face-right  { transform: rotateY( 90deg) translateZ(40px); filter: brightness(0.85); }
+.cube.slab-half .cube-face-top    { transform: rotateX( 90deg) translateZ(0px); height: 80px; top: 0px; filter: brightness(1.1); }
+.cube.slab-half .cube-face-bottom { transform: rotateX(-90deg) translateZ(40px); height: 80px; top: 0px; filter: brightness(0.5); }
+
+/* Small Slab for Sidebar */
+.cube-sm.slab-half .cube-face-sm {
+  height: 12px;
+  top: 12px;
+}
+.cube-sm.slab-half .cube-face-front-sm  { transform: rotateY(  0deg) translateZ(12px); }
+.cube-sm.slab-half .cube-face-back-sm   { transform: rotateY(180deg) translateZ(12px); filter: brightness(0.6); }
+.cube-sm.slab-half .cube-face-left-sm   { transform: rotateY(-90deg) translateZ(12px); filter: brightness(0.85); }
+.cube-sm.slab-half .cube-face-right-sm  { transform: rotateY( 90deg) translateZ(12px); filter: brightness(0.85); }
+.cube-sm.slab-half .cube-face-top-sm    { transform: rotateX( 90deg) translateZ(0px); height: 24px; top: 0px; filter: brightness(1.1); }
+.cube-sm.slab-half .cube-face-bottom-sm { transform: rotateX(-90deg) translateZ(12px); height: 24px; top: 0px; filter: brightness(0.5); }
+
+/* Small 3D Cube for Sidebar items */
+.cube-container-sm {
+  perspective: 300px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube-sm {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 14s linear infinite;
+}
+
+.cube-face-sm {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  border: 0.5px solid rgba(0, 0, 0, 0.25);
+}
+
+.cube-face-front-sm {
+  transform: rotateY(0deg) translateZ(12px);
+}
+
+.cube-face-back-sm {
+  transform: rotateY(180deg) translateZ(12px);
+  filter: brightness(0.6);
+}
+
+.cube-face-left-sm {
+  transform: rotateY(-90deg) translateZ(12px);
+  filter: brightness(0.85);
+}
+
+.cube-face-right-sm {
+  transform: rotateY(90deg) translateZ(12px);
+  filter: brightness(0.85);
+}
+
+.cube-face-top-sm {
+  transform: rotateX(90deg) translateZ(12px);
+  filter: brightness(1.1);
+}
+
+.cube-face-bottom-sm {
+  transform: rotateX(-90deg) translateZ(12px);
+  filter: brightness(0.5);
+}
