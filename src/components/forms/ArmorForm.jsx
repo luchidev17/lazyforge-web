@@ -268,6 +268,7 @@ export function ArmorForm({ ws, cartItems }) {
                 </div>
               )}
             </div>
+          </div>
 
           {/* 3D Viewer & Preview Column */}
           <div className="flex flex-col gap-4">
