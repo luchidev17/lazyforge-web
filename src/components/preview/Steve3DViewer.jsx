@@ -333,7 +333,8 @@ export function Steve3DViewer({ armorSlot = 'helmet', armorLayerTextureUrl = nul
     }
 
     // Load Steve skin
-    loader.load('/steve_skin.png', (baseTex) => {
+    const skinUrl = `${import.meta.env.BASE_URL || '/'}steve_skin.png`
+    loader.load(skinUrl, (baseTex) => {
       baseTex.magFilter = THREE.NearestFilter
       baseTex.minFilter = THREE.NearestFilter
       baseTex.colorSpace = THREE.SRGBColorSpace
