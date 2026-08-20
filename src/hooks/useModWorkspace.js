@@ -100,6 +100,22 @@ export function useModWorkspace() {
   const [hasBounce, setHasBounce] = useState(false)
   const [bounceVelocity, setBounceVelocity] = useState('0.8')
 
+  // --- Nuevos Campos: Combustible, WorldGen y Loot Tables ---
+  const [isFuel, setIsFuel] = useState(false)
+  const [burnTime, setBurnTime] = useState(10) // en segundos
+
+  const [isOre, setIsOre] = useState(false)
+  const [oreType, setOreType] = useState('stone') // 'stone' | 'deepslate'
+  const [veinSize, setVeinSize] = useState(8)
+  const [minHeight, setMinHeight] = useState(-64)
+  const [maxHeight, setMaxHeight] = useState(30)
+  const [veinsPerChunk, setVeinsPerChunk] = useState(8)
+
+  const [lootInjection, setLootInjection] = useState(false)
+  const [lootChests, setLootChests] = useState(['simple_dungeon'])
+  const [lootChance, setLootChance] = useState(0.25) // 0.0 a 1.0 (25%)
+  const [lootWeight, setLootWeight] = useState(15)
+
   const [blockIdError, setBlockIdError] = useState('')
   const [blockTextureError, setBlockTextureError] = useState('')
   const blockFileInputRef = useRef(null)
@@ -267,6 +283,17 @@ export function useModWorkspace() {
     setCraftSlots(defaultCraftSlots())
     setCraftResultCount(1)
     setCraftShapeless(false)
+    
+    // Reseteos de combustible y mineral
+    setIsFuel(false)
+    setBurnTime(10)
+    setIsOre(false)
+    setOreType('stone')
+    setVeinSize(8)
+    setMinHeight(-64)
+    setMaxHeight(30)
+    setVeinsPerChunk(8)
+
     setEditingId(null)
   }
 
@@ -288,6 +315,15 @@ export function useModWorkspace() {
     setUseSound('')
     setTextureError('')
     setIdError('')
+
+    // Reseteos de combustible y loot
+    setIsFuel(false)
+    setBurnTime(10)
+    setLootInjection(false)
+    setLootChests(['simple_dungeon'])
+    setLootChance(0.25)
+    setLootWeight(15)
+
     setEditingId(null)
   }
 
@@ -483,6 +519,13 @@ export function useModWorkspace() {
         effects: throwableData.effects,
       }),
       recipe,
+      // Propiedades de Combustible e Inyección de Botín
+      isFuel,
+      burnTime: isFuel ? parseInt(burnTime) || 10 : null,
+      lootInjection,
+      lootChests: lootInjection ? lootChests : [],
+      lootChance: lootInjection ? parseFloat(lootChance) || 0.25 : null,
+      lootWeight: lootInjection ? parseInt(lootWeight) || 15 : null,
     }
 
     if (editingId) setItems(items.map(i => i.id === editingId ? newItem : i))
@@ -574,6 +617,15 @@ export function useModWorkspace() {
       faceWestTextureUrl,
       faceWestTextureBase64,
       recipe,
+      // Propiedades de Combustible y Generación de Minerales
+      isFuel,
+      burnTime: isFuel ? parseInt(burnTime) || 10 : null,
+      isOre,
+      oreType: isOre ? oreType : 'stone',
+      veinSize: isOre ? parseInt(veinSize) || 8 : null,
+      minHeight: isOre ? parseInt(minHeight) ?? -64 : null,
+      maxHeight: isOre ? parseInt(maxHeight) ?? 30 : null,
+      veinsPerChunk: isOre ? parseInt(veinsPerChunk) || 8 : null,
     }
 
     if (editingId) setBlocks(blocks.map(b => b.id === editingId ? newBlock : b))
@@ -621,6 +673,13 @@ export function useModWorkspace() {
     setCraftSlots(defaultCraftSlots())
     setCraftResultCount(1)
     setCraftShapeless(false)
+
+    // Reseteo de loot injection en armadura
+    setLootInjection(false)
+    setLootChests(['simple_dungeon'])
+    setLootChance(0.25)
+    setLootWeight(15)
+
     setEditingId(null)
   }
 
@@ -722,6 +781,11 @@ export function useModWorkspace() {
       enchantability: parseInt(armorData.enchantability) || 15,
       recipe,
       category: 'Armadura',
+      // Propiedades de Inyección de Botín para armadura
+      lootInjection,
+      lootChests: lootInjection ? lootChests : [],
+      lootChance: lootInjection ? parseFloat(lootChance) || 0.25 : null,
+      lootWeight: lootInjection ? parseInt(lootWeight) || 15 : null,
     }
 
     if (editingId) setArmors(armors.map(a => a.id === editingId ? newArmor : a))
@@ -762,6 +826,12 @@ export function useModWorkspace() {
       setCraftResultCount(1)
       setCraftShapeless(false)
     }
+
+    // Cargar campos de loot
+    setLootInjection(armor.lootInjection || false)
+    setLootChests(armor.lootChests || ['simple_dungeon'])
+    setLootChance(armor.lootChance || 0.25)
+    setLootWeight(armor.lootWeight || 15)
   }
 
 
@@ -818,6 +888,14 @@ export function useModWorkspace() {
       setCraftResultCount(1)
       setCraftShapeless(false)
     }
+
+    // Cargar combustible y loot
+    setIsFuel(item.isFuel || false)
+    setBurnTime(item.burnTime || 10)
+    setLootInjection(item.lootInjection || false)
+    setLootChests(item.lootChests || ['simple_dungeon'])
+    setLootChance(item.lootChance || 0.25)
+    setLootWeight(item.lootWeight || 15)
   }
 
   const handleEditBlock = (block) => {
@@ -880,6 +958,16 @@ export function useModWorkspace() {
       setCraftResultCount(1)
       setCraftShapeless(false)
     }
+
+    // Cargar combustible y WorldGen de mineral
+    setIsFuel(block.isFuel || false)
+    setBurnTime(block.burnTime || 10)
+    setIsOre(block.isOre || false)
+    setOreType(block.oreType || 'stone')
+    setVeinSize(block.veinSize || 8)
+    setMinHeight(block.minHeight ?? -64)
+    setMaxHeight(block.maxHeight ?? 30)
+    setVeinsPerChunk(block.veinsPerChunk || 8)
   }
 
   const handleDownloadMod = () => {
@@ -945,6 +1033,12 @@ export function useModWorkspace() {
     modName, setModName, modId, setModId, modIdError, setModIdError,
     modTabIcon, setModTabIcon, modTabIconUrl, setModTabIconUrl, modTabIconBase64, setModTabIconBase64, modTabIconError, setModTabIconError, modTabIconInputRef,
     textureError, setTextureError, idError, setIdError, fileInputRef,
+
+    // Exportar nuevos campos de combustible, worldgen y loot
+    isFuel, setIsFuel, burnTime, setBurnTime,
+    isOre, setIsOre, oreType, setOreType, veinSize, setVeinSize, minHeight, setMinHeight, maxHeight, setMaxHeight, veinsPerChunk, setVeinsPerChunk,
+    lootInjection, setLootInjection, lootChests, setLootChests, lootChance, setLootChance, lootWeight, setLootWeight,
+
     handleIdChange, handleModIdChange, handleBlockIdChange, handleCategoryChange,
     handleTextureChange, handleBlockTextureChange, handleSlabTextureChange, handleFaceTextureChange, handleModTabIconChange,
     handleSaveItem, handleSaveBlock, handleDeleteItem, handleDeleteBlock,

@@ -94,6 +94,57 @@ export function ItemForm({ ws, cartItems }) {
               <span className="text-xs font-semibold text-mc-gold uppercase tracking-wider block">Propiedades Extra</span>
               <CheckboxRow checked={immuneToLava} onChange={setImmuneToLava} icon={<Flame className="w-4 h-4 text-orange-500" />} label="Inmune a la lava" />
               <CheckboxRow checked={enchantedGlow} onChange={setEnchantedGlow} icon={<Sparkles className="w-4 h-4 text-purple-400" />} label="Brillo Encantado" />
+              
+              {/* Nueva sección: Combustible */}
+              <div className="border-t border-mc-border/40 pt-3 mt-2 space-y-2">
+                <CheckboxRow checked={ws.isFuel} onChange={ws.setIsFuel} icon={<Flame className="w-4 h-4 text-amber-500 animate-pulse" />} label="¿Es Combustible?" />
+                {ws.isFuel && (
+                  <div className="pl-6 space-y-1">
+                    <label className="block text-xs text-slate-400 font-semibold">Duración de quemado: {ws.burnTime}s (~{(ws.burnTime / 10).toFixed(1)} ítems)</label>
+                    <input type="range" min="1" max="300" step="5" value={ws.burnTime} onChange={(e) => ws.setBurnTime(parseInt(e.target.value))} className="w-full accent-mc-gold bg-mc-slot" />
+                  </div>
+                )}
+              </div>
+
+              {/* Nueva sección: Botín en Cofres (Loot Injection) */}
+              <div className="border-t border-mc-border/40 pt-3 mt-2 space-y-2">
+                <CheckboxRow checked={ws.lootInjection} onChange={ws.setLootInjection} icon={<Package className="w-4 h-4 text-sky-400" />} label="Aparece en Cofres del Mundo" />
+                {ws.lootInjection && (
+                  <div className="pl-6 space-y-3">
+                    <div>
+                      <label className="block text-xs text-slate-400 mb-1">Cofres donde puede aparecer:</label>
+                      <div className="grid grid-cols-2 gap-1.5 text-xs text-slate-300">
+                        {[
+                          { id: 'simple_dungeon', label: 'Mazmorras' },
+                          { id: 'abandoned_mineshaft', label: 'Minas Abandonadas' },
+                          { id: 'village_weaponsmith', label: 'Herrería de Aldea' },
+                          { id: 'nether_bridge', label: 'Fortalezas Nether' },
+                          { id: 'end_city_treasure', label: 'Ciudades del End' },
+                        ].map(chest => (
+                          <label key={chest.id} className="flex items-center gap-1.5 cursor-pointer">
+                            <input type="checkbox" checked={ws.lootChests.includes(chest.id)} onChange={(e) => {
+                              if (e.target.checked) ws.setLootChests([...ws.lootChests, chest.id])
+                              else ws.setLootChests(ws.lootChests.filter(id => id !== chest.id))
+                            }} className="accent-mc-gold" />
+                            {chest.label}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-[10px] text-slate-400 font-semibold mb-1">Probabilidad ({(ws.lootChance * 100).toFixed(0)}%)</label>
+                        <input type="range" min="0.01" max="1.0" step="0.05" value={ws.lootChance} onChange={(e) => ws.setLootChance(parseFloat(e.target.value))} className="w-full accent-mc-gold bg-mc-slot" />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] text-slate-400 font-semibold mb-1">Peso en Loot (Rareza: {ws.lootWeight})</label>
+                        <input type="range" min="1" max="100" step="1" value={ws.lootWeight} onChange={(e) => ws.setLootWeight(parseInt(e.target.value))} className="w-full accent-mc-gold bg-mc-slot" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 

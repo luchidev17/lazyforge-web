@@ -193,6 +193,55 @@ export function BlockForm({ ws, cartItems }) {
                     </div>
                   )}
                 </div>
+
+                {/* Nueva sección: Combustible en Horno */}
+                <div className="border-t border-mc-border/40 pt-3 mt-2 space-y-2">
+                  <CheckboxRow checked={ws.isFuel} onChange={ws.setIsFuel} icon={<Flame className="w-4 h-4 text-amber-500 animate-pulse" />} label="¿Es Combustible?" />
+                  {ws.isFuel && (
+                    <div className="pl-6 space-y-1">
+                      <label className="block text-xs text-slate-400 font-semibold">Duración de quemado: {ws.burnTime}s (~{(ws.burnTime / 10).toFixed(1)} ítems)</label>
+                      <input type="range" min="1" max="300" step="5" value={ws.burnTime} onChange={(e) => ws.setBurnTime(parseInt(e.target.value))} className="w-full accent-mc-gold bg-mc-slot" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Nueva sección: Generación de Minerales (WorldGen) */}
+                <div className="border-t border-mc-border/40 pt-3 mt-2 space-y-2">
+                  <CheckboxRow checked={ws.isOre} onChange={ws.setIsOre} icon={<Blocks className="w-4 h-4 text-emerald-400" />} label="¿Generar en el mundo como mineral?" />
+                  {ws.isOre && (
+                    <div className="pl-6 space-y-3">
+                      <div>
+                        <FieldLabel>Generarse reemplazando a:</FieldLabel>
+                        <SelectInput value={ws.oreType} onChange={(e) => ws.setOreType(e.target.value)}>
+                          <option value="stone">Piedra Vainilla (Stone)</option>
+                          <option value="deepslate">Pizarra Profunda (Deepslate)</option>
+                        </SelectInput>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <FieldLabel>Tamaño de Veta ({ws.veinSize})</FieldLabel>
+                          <input type="range" min="1" max="24" value={ws.veinSize} onChange={(e) => ws.setVeinSize(parseInt(e.target.value))} className="w-full accent-emerald-500 bg-mc-slot" />
+                        </div>
+                        <div>
+                          <FieldLabel>Vetas por Chunk ({ws.veinsPerChunk})</FieldLabel>
+                          <input type="range" min="1" max="32" value={ws.veinsPerChunk} onChange={(e) => ws.setVeinsPerChunk(parseInt(e.target.value))} className="w-full accent-emerald-500 bg-mc-slot" />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <FieldLabel>Altura Mínima (Y: {ws.minHeight})</FieldLabel>
+                          <input type="range" min="-64" max="320" step="4" value={ws.minHeight} onChange={(e) => ws.setMinHeight(parseInt(e.target.value))} className="w-full accent-emerald-500 bg-mc-slot" />
+                        </div>
+                        <div>
+                          <FieldLabel>Altura Máxima (Y: {ws.maxHeight})</FieldLabel>
+                          <input type="range" min="-64" max="320" step="4" value={ws.maxHeight} onChange={(e) => ws.setMaxHeight(parseInt(e.target.value))} className="w-full accent-emerald-500 bg-mc-slot" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="pt-2 border-t border-mc-border space-y-3">
